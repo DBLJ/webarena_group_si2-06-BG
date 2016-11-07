@@ -33,24 +33,32 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
+    <header>
+    <nav class="top-bar">
         <ul class="title-area large-3 medium-4 columns">
             <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
+                <?php echo $this->Html->link('Acceuil', array('controller' => 'Arena', 'action' => '/')); ?>
+            </li>
+            <li>
+             <?php echo $this->Html->link('Vision', array('controller' => 'Arena', 'action' => 'sight')); ?>            
+            </li>
+            <li>
+             <?php echo $this->Html->link('combattant', array('controller' => 'Arena', 'action' => 'fighter')); ?>            
+            </li>
+            <li>
+             <?php echo $this->Html->link('en attente', array('controller' => 'Arena', 'action' => 'sight')); ?>            
+            </li>
+            <li>
+             <?php echo $this->Html->link('en attente', array('controller' => 'Arena', 'action' => 'sight')); ?>
             </li>
         </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-                <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
-            </ul>
-        </div>
     </nav>
+    </header>
     <?= $this->Flash->render() ?>
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
     </div>
-    <footer>
+    <footer class="bottom-bar">
     <p> mon nom mes camarades SI2</p>
     </footer>
 </body>
