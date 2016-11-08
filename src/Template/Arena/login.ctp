@@ -1,6 +1,9 @@
-<?php $this->assign('title', 'titredepage');?>
+<?php $this->assign('title', 'connexion');?>
 <?php echo $this->Html->link('Vision', '/'); ?>
-<form name="login" action="index_submit" method="get" accept-charset="utf-8">
+
+
+<form name="login" action="login" method="post" accept-charset="utf-8">
+
 		<ul>
 			<li>
 				<label for="usermail">Email</label>
@@ -13,4 +16,5 @@
 				<input type="submit" value="Login">
 			</li>
 		</ul>
-	</form>
+</form>
+
