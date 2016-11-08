@@ -31,4 +31,22 @@ header{
     width: 100%;
     position: absolute;
     bottom: 0;
+    display: flex;
+    align-content: end;
+    justify-content: end;
+}
+
+/* links */
+a {
+  text-decoration: none;
+  color: white;
+}
+a:visited {
+  color: white;
+}
+a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: black;
+  background: white;
+  font-size: 1.2em;
 }
