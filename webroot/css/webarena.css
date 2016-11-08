@@ -30,6 +30,16 @@ header{
     height: auto;
     background-color: green;
 }
+.login_menu{
+    background-color: blue;
+width: 223px;
+position: absolute;
+height: 326px;
+top: 0;
+right: 0;
+z-index: -1;
+opacity: 0;
+}
 .bottom-bar{
     background-color:black;
     height:75px;
