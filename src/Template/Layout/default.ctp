@@ -35,7 +35,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <body>
     <header>
     <nav class="top-bar">
-        <ul class="title-area large-3 medium-4 columns">
+        <ul class="menu">
             <li class="name">
                 <?php echo $this->Html->link('Acceuil', array('controller' => 'Arena', 'action' => '/')); ?>
             </li>
@@ -53,8 +53,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </li>
         </ul>
     </nav>
+    <nav class="login">
+
+    </nav>
     </header>
-    <?= $this->Flash->render() ?>
+    <!--<?= $this->Flash->render() ?>-->
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
     </div>

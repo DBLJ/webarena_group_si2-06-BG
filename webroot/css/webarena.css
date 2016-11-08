@@ -1,0 +1,34 @@
+html, body{
+    margin:0;
+    width:100%;
+    height:100%;
+}
+header{
+    display: flex;
+    width: 100%;
+    height:75px;
+}
+.top-bar{
+    background-color:black;
+    height:75px;
+    flex:2;
+}
+.menu{
+    padding: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 23px;;
+}
+.login{
+    width: 75px;
+    height: auto;
+    background-color: green;
+}
+.bottom-bar{
+    background-color:black;
+    height:75px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
