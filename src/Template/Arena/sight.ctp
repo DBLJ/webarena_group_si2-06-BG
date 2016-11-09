@@ -8,17 +8,21 @@
 	$nombre_de_ligne = 1;
 	$nombre_de_colonne = 1;
 	while ($nombre_de_colonne <= 11) {
-		echo '<div class="gameblock_container 1">';	
+		echo '<div class="gameblock_container">';	
 		while ($nombre_de_ligne < 16)
 		{
-    	echo '<div class="gameblock"></div>';
+    	echo '<div class="gameblock ';
+    	echo $nombre_de_colonne;
+    	echo ' ';
+    	echo $nombre_de_ligne;
+    	echo ' "></div>';
 		    $nombre_de_ligne++;
 		}
 		echo '</div>';
 		$nombre_de_ligne = 1;
 		$nombre_de_colonne++;
 	}
-	echo "$this->request->params(1)"
+	echo $this->request->params['pass'][0];
 	?>
 	</div>
 </div>
