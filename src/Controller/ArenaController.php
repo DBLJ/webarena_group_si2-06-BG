@@ -11,7 +11,9 @@ use App\Controller\AppController;
  */
 class ArenaController extends AppController {
 
-
+	public function index() {
+        
+    }
 
     public function login() {
 
