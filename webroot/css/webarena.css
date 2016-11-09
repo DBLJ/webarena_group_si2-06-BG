@@ -83,6 +83,10 @@ a:hover, a:focus, a:active {
 #right_container{
     flex: 4;
     background-color: blue;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
 }
 #top_container{
     flex:2;
@@ -90,4 +94,19 @@ a:hover, a:focus, a:active {
 #bottom_container{
     flex: 2;
 background-color: red;
+}
+.gameblock{
+    width:100%;
+    height:100%;
+    background-color:grey;
+    border: solid 1px black;
+}
+.gameblock:hover{
+    background-color: lightgrey;
+}
+.gameblock_container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+justify-content: space-around;
 }
