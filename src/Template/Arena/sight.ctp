@@ -18,14 +18,20 @@
     	echo $nombre_de_colonne;
     	echo ' ';
     	echo $nombre_de_ligne;
-    	echo ' "></div>';
+    	echo ' " onclick="test(';
+    	echo $nombre_de_colonne;
+    	echo ',';
+    	echo $nombre_de_ligne;
+    	echo ')"></div>';
 		    $nombre_de_ligne++;
 		}
 		echo '</div>';
 		$nombre_de_ligne = 0;
 		$nombre_de_colonne++;
 	}
-	echo $this->request->params['pass'][0];
+	if (isset($this->request->params['pass'][0])){
+		echo $this->request->params['pass'][0];
+	}
 	?>
 	</div>
 </div>
