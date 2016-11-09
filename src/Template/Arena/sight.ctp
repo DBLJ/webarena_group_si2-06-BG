@@ -5,11 +5,14 @@
 	</div>
 	<div id="right_container">
 	<?php
-	$nombre_de_ligne = 1;
-	$nombre_de_colonne = 1;
-	while ($nombre_de_colonne <= 11) {
+	#define largeur (x) & longeur (y) of the arena:
+	$x= 16;
+	$y= 10;
+	$nombre_de_ligne = 0;
+	$nombre_de_colonne = 0;
+	while ($nombre_de_colonne <= $y) {
 		echo '<div class="gameblock_container">';	
-		while ($nombre_de_ligne < 16)
+		while ($nombre_de_ligne < $x)
 		{
     	echo '<div class="gameblock ';
     	echo $nombre_de_colonne;
@@ -19,7 +22,7 @@
 		    $nombre_de_ligne++;
 		}
 		echo '</div>';
-		$nombre_de_ligne = 1;
+		$nombre_de_ligne = 0;
 		$nombre_de_colonne++;
 	}
 	echo $this->request->params['pass'][0];
