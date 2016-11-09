@@ -10,8 +10,9 @@ header{
 }
 .container{
     position: absolute;
-    top: 76px;
+    top: 75px;
     bottom: 75px;
+    width:100%;
 }
 .top-bar{
     background-color:black;
@@ -64,4 +65,29 @@ a:hover, a:focus, a:active {
   color: black;
   background: white;
   font-size: 1.2em;
+}
+
+
+/* sight part */
+#container{
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+}
+#left_container{
+    flex: 1;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+}
+#right_container{
+    flex: 4;
+    background-color: blue;
+}
+#top_container{
+    flex:2;
+}
+#bottom_container{
+    flex: 2;
+background-color: red;
 }
