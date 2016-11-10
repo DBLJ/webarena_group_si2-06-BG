@@ -10,5 +10,8 @@ for($i=0;$i<$nb_perso;$i++){
         echo($perso [$i]['level']);
         echo '<br>';
 }
+if($nomguild){
+    echo($nomguild);
+}
 ?>
 
