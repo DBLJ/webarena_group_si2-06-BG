@@ -18,3 +18,15 @@
 		</ul>
 </form>
 
+<?php echo $this->form->create('Sign-in',array(
+    'id'=>'UserSignupForm',
+    'url'=> array(
+        'controller'=>'Arena',
+        'action'=>'signIn'
+    )
+)); ?>
+<?php echo $this->form->input('email', array('label'=>"Your email address : ",'size'=>50)); ?>
+<?php echo $this->form->input('password', array('label'=>"Your password : ")); ?>
+<?php echo $this->form->submit('Submit'); ?>
+<?php echo $this->form->end(); ?>
+
