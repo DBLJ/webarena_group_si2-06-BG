@@ -9,9 +9,11 @@ for($i=0;$i<$nb_perso;$i++){
         echo(" au niveau");
         echo($perso [$i]['level']);
         echo '<br>';
+        
+    
 }
-if($nomguild){
-    echo($nomguild);
-}
+echo($nomguild[0]['name']);
+
+
 ?>
 

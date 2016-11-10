@@ -60,10 +60,16 @@ class ArenaController extends AppController {
                 }
                 $this->set('perso',$info);
                 $this->set('nb_perso',$nb_perso);
+                
                 if($info[0]['guild_id']){
-                    $nomguild=$this->Fighters->guildrecover($info[0]['guild_id']);
-                    $this->set('nomguild',$nomguild);
+                    $tab=$this->Fighters->guildrecover($info[0]['guild_id']);
+                    $this->set('nomguild',$tab);
+                    
                 }
+               
+                
+                
+                
             }
             else{
                 echo('Créez votre perso');
