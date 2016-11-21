@@ -27,6 +27,7 @@ class ArenaController extends AppController {
                     $this->request->Session()->write('Session.id', $i);
                     $this->redirect("/Arena/fighter");
                 }
+                //jdkqsjdls
             } 
             
             else {
