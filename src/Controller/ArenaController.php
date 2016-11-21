@@ -33,6 +33,8 @@ class ArenaController extends AppController {
             else {
                 $this->loadModel('Players');
                 $this->loadModel('Fighters');
+$mail = $this->request->data['email'];
+$password = $this->request->data['password'];
                 if (strlen($this->request->data['password']) > 6) {
                     $indic = $this->Players->register($this->request->data['email'], $this->request->data['password']);
                     if ($indic) {
@@ -79,25 +81,25 @@ class ArenaController extends AppController {
         if ($this->request->is('post')) {
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
-            if ($this->request->data['process'] == move_x) {
+            if ($this->request->data['process'] == "move_x") {
                 if ($info[0]['coordinate_x'] < 15) {
                     $this->Fighters->moveFighter($info[0]['coordinate_x'],1);
                 }
             }
 
-            if ($this->request->data['process'] == move_x1) {
+            if ($this->request->data['process'] == "move_x1") {
                 if ($info[0]['coordinate_x'] > 0) {
                     $this->Fighters->moveFighter($info[0]['coordinate_x'],2);
                 }
             }
 
-            if ($this->request->data['process'] == move_y) {
+            if ($this->request->data['process'] == "move_y") {
                 if ($info[0]['coordinate_y'] < 10) {
                     $this->Fighters->moveFighter($info[0]['coordinate_y'],3);
                 }
             }
 
-            if ($this->request->data['process'] == move_y1) {
+            if ($this->request->data['process'] == "move_y1") {
                 if ($info[0]['coordinate_y'] > 0) {
                     $this->Fighters->moveFighter($info[0]['coordinate_y'],4);
                 }
