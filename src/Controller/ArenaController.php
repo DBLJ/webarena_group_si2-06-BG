@@ -79,6 +79,7 @@ $password = $this->request->data['password'];
     }
 
     public function sight() {
+    	if ($this->request->session()->check('Session.id')) {
         if ($this->request->is('post')) {
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
@@ -109,7 +110,11 @@ $password = $this->request->data['password'];
             } else {
             $this->redirect("/Arena/fighter");
         	}
-        }
+        	}
+        	} else {
+            $this->redirect("/Arena/login");
+        	}
+        
     }
 
     public function diary() {
