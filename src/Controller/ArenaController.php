@@ -71,7 +71,14 @@ $password = $this->request->data['password'];
                     $this->set('nomguild', $tab);
                 }
             } else {
-                echo('Créez votre perso');
+                echo('<p>Créez votre perso</p>');
+		if($this->request->is('post'))	
+		{
+			$name = $this->request->data['fighterName'];
+			$playerId = $this->request->Session()->read('Session.id');
+			$this->Fighters->createNewFighter($name, $playerId);
+			$this->redirect("/Arena/fighter");
+		}
             }
         } else {
             $this->redirect("/Arena/login");
@@ -124,5 +131,7 @@ $password = $this->request->data['password'];
     public function index() {
         
     }
+
+
 
 }
