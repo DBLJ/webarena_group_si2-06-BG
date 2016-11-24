@@ -70,14 +70,14 @@ $query->update()
 		
 		$newFighter->name = $name;
 		pr($newFighter->name);
-		$newFighter->player_id = $player_id;
+		$newFighter->player_id = $playerId;
 		$newFighter->coordinate_x = 0;
 		$newFighter->coordinate_y = 0;
 		$newFighter->level = 1;
 		$newFighter->xp = 0;
-		$newFighter->skill_sight = rand(1,10);
-		$newFighter->skill_strength = rand(1,10);
-		$newFighter->skill_health = rand(1,10);
+		$newFighter->skill_sight = mt_rand(1,10);
+		$newFighter->skill_strength = mt_rand(1,10);
+		$newFighter->skill_health = mt_rand(1,10);
 		$newFighter->current_health = $newFighter->skill_health;
 		$newFighter->guild_id = NULL;
 		$this->save($newFighter);
