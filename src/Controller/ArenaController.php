@@ -82,6 +82,7 @@ $password = $this->request->data['password'];
         if ($this->request->is('post')) {
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
+            if ($info) {
             if ($this->request->data['process'] == "move_x") {
                 if ($info[0]['coordinate_x'] < 15) {
                     $this->Fighters->moveFighter($info[0]['coordinate_x'],1);
@@ -105,6 +106,9 @@ $password = $this->request->data['password'];
                     $this->Fighters->moveFighter($info[0]['coordinate_y'],4);
                 }
             }
+            } else {
+            $this->redirect("/Arena/fighter");
+        	}
         }
     }
 
