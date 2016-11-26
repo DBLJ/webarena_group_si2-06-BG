@@ -90,28 +90,29 @@ $password = $this->request->data['password'];
         if ($this->request->is('post')) {
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
+	    $sessionId = $this->request->session()->read('Session.id');
             if ($info) {
             if ($this->request->data['process'] == "move_x") {
-                if ($info[0]['coordinate_x'] < 15) {
-                    $this->Fighters->moveFighter($info[0]['coordinate_x'],1);
+                if ($info[0]['coordinate_x'] < 14) {
+                    $this->Fighters->moveFighter($info[0]['coordinate_x'],1,$sessionId);
                 }
             }
 
             if ($this->request->data['process'] == "move_x1") {
                 if ($info[0]['coordinate_x'] > 0) {
-                    $this->Fighters->moveFighter($info[0]['coordinate_x'],2);
+                    $this->Fighters->moveFighter($info[0]['coordinate_x'],2,$sessionId);
                 }
             }
 
             if ($this->request->data['process'] == "move_y") {
-                if ($info[0]['coordinate_y'] < 10) {
-                    $this->Fighters->moveFighter($info[0]['coordinate_y'],3);
+                if ($info[0]['coordinate_y'] < 9) {
+                    $this->Fighters->moveFighter($info[0]['coordinate_y'],3,$sessionId);
                 }
             }
 
             if ($this->request->data['process'] == "move_y1") {
                 if ($info[0]['coordinate_y'] > 0) {
-                    $this->Fighters->moveFighter($info[0]['coordinate_y'],4);
+                    $this->Fighters->moveFighter($info[0]['coordinate_y'],4,$sessionId);
                 }
             }
             } else {

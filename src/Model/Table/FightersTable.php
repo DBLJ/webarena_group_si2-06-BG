@@ -35,11 +35,13 @@ class FightersTable extends Table
     }
     
     
-    public function moveFighter($coordonnee,$identifiant_move){
+    public function moveFighter($coordonnee,$identifiant_move, $sessionId){
+	
         if($identifiant_move == 1){
         $query = $this->query();
 $query->update()
     ->set(['coordinate_x' => ($coordonnee+1)])
+    ->where(['player_id' => $sessionId])
     ->execute();
         }
         
@@ -47,6 +49,7 @@ $query->update()
         $query = $this->query();
 $query->update()
     ->set(['coordinate_x' => ($coordonnee-1)])
+    ->where(['player_id' => $sessionId])
     ->execute();
         }
         
@@ -54,6 +57,7 @@ $query->update()
         $query = $this->query();
 $query->update()
     ->set(['coordinate_y' => ($coordonnee+1)])
+    ->where(['player_id' => $sessionId])
     ->execute();
         }
         
@@ -61,6 +65,7 @@ $query->update()
         $query = $this->query();
 $query->update()
     ->set(['coordinate_y' => ($coordonnee-1)])
+    ->where(['player_id' => $sessionId])
     ->execute();
         }
     }
