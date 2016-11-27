@@ -1,6 +1,6 @@
 <?php $this->assign('title', 'connexion');?>
-<div>
-	<p>back</p>
+<div id="backButton">
+	<p class="clickable" onclick="redirect('back')">back</p>
 </div>
 <div id="choiceDiv">
 <p class="clickable" id="goToLoginDiv" onclick="redirect('login')"> se connecter </p>
