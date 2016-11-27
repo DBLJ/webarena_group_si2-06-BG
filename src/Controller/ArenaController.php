@@ -86,7 +86,18 @@ $password = $this->request->data['password'];
     }
 
     public function sight() {
+    	
     	if ($this->request->session()->check('Session.id')) {
+            $this->loadModel('Fighters');
+            $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
+            if ($info) {
+                $this->set('perso', $info);
+            }
+
+
+
+
+
         if ($this->request->is('post')) {
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
@@ -115,6 +126,7 @@ $password = $this->request->data['password'];
                     $this->Fighters->moveFighter($info[0]['coordinate_y'],4,$sessionId);
                 }
             }
+            $this->redirect("/Arena/sight");
             } else {
             $this->redirect("/Arena/fighter");
         	}

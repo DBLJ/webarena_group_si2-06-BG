@@ -85,25 +85,39 @@
 </form>
 	</div>
 	<div id="bottom_container">
-	div2
+	<?php 
+		echo($perso[0]['coordinate_x']);
+	?>
 	</div>
 	</div>
 	<div id="right_container">
 	<?php
 	#define largeur (x) & longeur (y) of the arena:
-	$x= 15;
-	$y= 10;
-	$nombre_de_ligne = 1;
-	$nombre_de_colonne = 1;
+	$x= 14;
+	$y= 9;
+	$nombre_de_ligne = 0;
+	$nombre_de_colonne = 0;
 	while ($nombre_de_colonne <= $y) {
 		echo '<div class="gameblock_container">';	
 		while ($nombre_de_ligne <= $x)
 		{
-    	echo '<div class="gameblock ';
+		if ($perso[0]['coordinate_x']==$nombre_de_ligne and $perso[0]['coordinate_y']==$nombre_de_colonne) {
+			echo '<div class="gameblock" id="gb';
+    		echo $nombre_de_colonne;
+    		echo '';
+    		echo $nombre_de_ligne;
+    		echo '" onclick="test(';
+    		echo $nombre_de_colonne;
+    		echo ',';
+    		echo $nombre_de_ligne;
+    		echo ')" style="background-color:green;"></div>';
+		    $nombre_de_ligne++;
+		}
+    	echo '<div class="gameblock" id="gb';
     	echo $nombre_de_colonne;
-    	echo ' ';
+    	echo '';
     	echo $nombre_de_ligne;
-    	echo ' " onclick="test(';
+    	echo '" onclick="test(';
     	echo $nombre_de_colonne;
     	echo ',';
     	echo $nombre_de_ligne;
@@ -111,7 +125,7 @@
 		    $nombre_de_ligne++;
 		}
 		echo '</div>';
-		$nombre_de_ligne = 1;
+		$nombre_de_ligne = 0;
 		$nombre_de_colonne++;
 	}
 	?>
