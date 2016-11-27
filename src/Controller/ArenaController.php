@@ -70,7 +70,7 @@ $password = $this->request->data['password'];
                     $tab = $this->Fighters->guildrecover($info[0]['guild_id']);
                     $this->set('nomguild', $tab);
                 }
-            } else {
+            } else {	
                 echo('<p>Créez votre perso</p>');
 		if($this->request->is('post'))	
 		{
@@ -93,6 +93,7 @@ $password = $this->request->data['password'];
             if ($info) {
                 $this->set('perso', $info);
             }
+            // todo : only admin player can execute this function
             $this->loadModel('surroundings');
             $this->Fighters->createSurround();
 
