@@ -93,10 +93,8 @@ $password = $this->request->data['password'];
             if ($info) {
                 $this->set('perso', $info);
             }
-
-
-
-
+            $this->loadModel('surroundings');
+            $this->Fighters->createSurround();
 
         if ($this->request->is('post')) {
             $this->loadModel('Fighters');

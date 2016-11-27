@@ -88,5 +88,12 @@ $query->update()
 		$this->save($newFighter);
 		
 	}
-
+    public function createSurround(){
+        $surround= \Cake\ORM\TableRegistry::get('surroundings');
+        $newSurround = $surround->newEntity();
+        $newSurround->type="arbre";
+        $newSurround->coordinate_x =2;
+        $newSurround->coordinate_y=2;
+        $surround->save($newSurround);
+    }
 }
