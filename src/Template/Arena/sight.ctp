@@ -86,7 +86,7 @@
 	</div>
 	<div id="bottom_container">
 	<?php 
-		echo($perso[0]['coordinate_x']);
+		echo($perso[0]);
 	?>
 	</div>
 	</div>
@@ -101,7 +101,33 @@
 		echo '<div class="gameblock_container">';	
 		while ($nombre_de_ligne <= $x)
 		{
-		if ($perso[0]['coordinate_x']==$nombre_de_ligne and $perso[0]['coordinate_y']==$nombre_de_colonne) {
+		//objet divers // ecrit en dure mais a inserez dans surroundigs dans la bdd pour gerer les collisions
+		if ($nombre_de_ligne==4 and $nombre_de_colonne==1) {
+			echo '<div class="gameblock" id="gb';
+    		echo $nombre_de_colonne;
+    		echo '';
+    		echo $nombre_de_ligne;
+    		echo '" onclick="test(';
+    		echo $nombre_de_colonne;
+    		echo ',';
+    		echo $nombre_de_ligne;
+    		echo ')" style="background-color:red;"></div>';
+		    $nombre_de_ligne++;
+		}
+		elseif ($nombre_de_ligne==2 and $nombre_de_colonne==2) {
+			echo '<div class="gameblock" id="gb';
+    		echo $nombre_de_colonne;
+    		echo '';
+    		echo $nombre_de_ligne;
+    		echo '" onclick="test(';
+    		echo $nombre_de_colonne;
+    		echo ',';
+    		echo $nombre_de_ligne;
+    		echo ')" style="background-color:red;"></div>';
+		    $nombre_de_ligne++;
+		}
+		//perso 0
+		elseif ($perso[0]['coordinate_x']==$nombre_de_ligne and $perso[0]['coordinate_y']==$nombre_de_colonne) {
 			echo '<div class="gameblock" id="gb';
     		echo $nombre_de_colonne;
     		echo '';
@@ -112,7 +138,7 @@
     		echo $nombre_de_ligne;
     		echo ')" style="background-color:green;"></div>';
 		    $nombre_de_ligne++;
-		}
+		}else{
     	echo '<div class="gameblock" id="gb';
     	echo $nombre_de_colonne;
     	echo '';
@@ -121,9 +147,9 @@
     	echo $nombre_de_colonne;
     	echo ',';
     	echo $nombre_de_ligne;
-    	echo ')"></div>';
+    	echo ')" style="background-color:grey;"></div>';
 		    $nombre_de_ligne++;
-		}
+		}}
 		echo '</div>';
 		$nombre_de_ligne = 0;
 		$nombre_de_colonne++;
