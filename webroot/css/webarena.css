@@ -110,3 +110,26 @@ background-color: red;
     height: 100%;
 justify-content: space-around;
 }
+
+/* login aprt */
+#loginDiv,#signInDiv,#choiceDiv{
+height: 100%;
+width: 100%;
+position: absolute;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
+}
+#loginDiv,#signInDiv{
+    display:none;
+}
+.clickable{
+    background-color: blue;
+    padding:1em;
+}
+.clickable:hover{
+    background-color: lightblue;
+    padding:1.1em;
+}

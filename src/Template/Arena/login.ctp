@@ -1,7 +1,12 @@
 <?php $this->assign('title', 'connexion');?>
-<?php echo $this->Html->link('Vision', '/'); ?>
-
-
+<div>
+	<p>back</p>
+</div>
+<div id="choiceDiv">
+<p class="clickable" id="goToLoginDiv" onclick="redirect('login')"> se connecter </p>
+<p class="clickable" id="goToSignInDiv" onclick="redirect('signIn')"> créer un compte</p>
+</div>
+<div id="loginDiv">
 <form name="login" action="login" method="post" accept-charset="utf-8">
 
 		<ul>
@@ -20,7 +25,9 @@
 			</li>
 		</ul>
 </form>
+</div>
 
+<div id="signInDiv">
 <?php echo $this->form->create('Sign-in',array(
     'id'=>'UserSignupForm',
     'url'=> array(
@@ -33,4 +40,4 @@
 <?php echo $this->form->input('password', array('label'=>"Your password : ")); ?>
 <?php echo $this->form->submit('Submit'); ?>
 <?php echo $this->form->end(); ?>
-
+</div>
