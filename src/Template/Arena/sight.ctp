@@ -85,8 +85,19 @@
 </form>
 	</div>
 	<div id="bottom_container">
+	<form name="playerForm" action="sight" method="post" accept-charset="utf-8">
+
+		<ul>
+				<input type="hidden" name="process" value="choosePlayer">
+			
+			<li>
+				<input name="playerName" type="submit" value="admin@test.com">
+			</li>
+		</ul>
+		</form>
 	<?php 
 		echo($ennemy[0]);
+		echo($test);
 	?>
 	</div>
 	</div>

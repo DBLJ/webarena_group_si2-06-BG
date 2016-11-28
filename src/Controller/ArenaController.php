@@ -91,19 +91,24 @@ $password = $this->request->data['password'];
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
             $info2 = $this->Fighters->ennemyRecover($this->request->session()->read('Session.id'));
+            //$test = $this->request->session()->read('test');
             if ($info) {
                 $this->set('perso', $info);
                 $this->set('ennemy',$info2);
+                
             }
             // todo : only admin player can execute this function_exists(function_name)
             $this->loadModel('surroundings');
             $this->Fighters->createSurround();
 
         if ($this->request->is('post')) {
+
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
-	    $sessionId = $this->request->session()->read('Session.id');
+	    	$sessionId = $this->request->session()->read('Session.id');
+
             if ($info) {
+
             if ($this->request->data['process'] == "move_x") {
                 if ($info[0]['coordinate_x'] < 14) {
                     $this->Fighters->moveFighter($info[0]['coordinate_x'],1,$sessionId);
@@ -141,6 +146,16 @@ $password = $this->request->data['password'];
                 }else{
                 	echo "Error: vous ne pouvez pas faire ce mouvement";
                 }
+            }
+
+            if ($this->request->data['process'] == "choosePlayer") { //getPlayerid to get the ennemy on map
+            	$playerName=$this->Fighters->getPlayerId($this->request->data['playerName']);
+            	/*if ($playerName) {
+            		$this->Fighters->set('test',$playerName);
+            		$this->redirect("/Arena/sight");
+            	}*/
+            	//$this->request->Session()->write('test', 1);  
+            	$this->set('test',$this->request->data['playerName']);
             }
             } else {
             $this->redirect("/Arena/fighter");

@@ -28,11 +28,17 @@ class FightersTable extends Table
         return($info);
     }
     
+    public function getPlayerId($name){
+        $players= \Cake\ORM\TableRegistry::get('Players');
+        $info=$players->find('all', array('conditions'=>array('login='=>$name)))->toArray();
+        return($info);
+    }
     public function ennemyRecover($id){
         $fighters= \Cake\ORM\TableRegistry::get('Fighters');
         $info=$fighters->find('all', array('conditions'=>array('player_id !='=>$id)))->toArray();
         return($info);
     }
+
 
     public function guildrecover($idguild){
         $guild= \Cake\ORM\TableRegistry::get('Guilds');
