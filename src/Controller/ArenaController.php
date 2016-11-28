@@ -90,10 +90,12 @@ $password = $this->request->data['password'];
     	if ($this->request->session()->check('Session.id')) {
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
+            $info2 = $this->Fighters->ennemyRecover($this->request->session()->read('Session.id'));
             if ($info) {
                 $this->set('perso', $info);
+                $this->set('ennemy',$info2);
             }
-            // todo : only admin player can execute this function
+            // todo : only admin player can execute this function_exists(function_name)
             $this->loadModel('surroundings');
             $this->Fighters->createSurround();
 

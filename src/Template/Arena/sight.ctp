@@ -86,7 +86,7 @@
 	</div>
 	<div id="bottom_container">
 	<?php 
-		echo($perso[0]);
+		echo($ennemy[0]);
 	?>
 	</div>
 	</div>
@@ -138,7 +138,20 @@
     		echo $nombre_de_ligne;
     		echo ')" style="background-color:green;"></div>';
 		    $nombre_de_ligne++;
-		}else{
+		}
+		elseif (($ennemy[0]['coordinate_x']==$nombre_de_ligne and $ennemy[0]['coordinate_y']==$nombre_de_colonne)){
+			echo '<div class="gameblock" id="gb';
+    		echo $nombre_de_colonne;
+    		echo '';
+    		echo $nombre_de_ligne;
+    		echo '" onclick="test(';
+    		echo $nombre_de_colonne;
+    		echo ',';
+    		echo $nombre_de_ligne;
+    		echo ')" style="background-color:yellow;"></div>';
+		    $nombre_de_ligne++;
+		}
+		else{
     	echo '<div class="gameblock" id="gb';
     	echo $nombre_de_colonne;
     	echo '';
