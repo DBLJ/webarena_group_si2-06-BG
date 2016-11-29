@@ -86,6 +86,20 @@ $query->update()
     ->execute();
         }
     }
+    public function attack($health,$strength,$ennemyId){
+        $query = $this->query();
+    $query->update()
+    ->set(['current_health' => ($health-$strength)])
+    ->where(['player_id' => $ennemyId])
+    ->execute();
+    }
+    public function death(){
+        $query = $this->query();
+    $query->update()
+    ->set(['current_health' => ($health-$strength)])
+    ->where(['player_id' => $ennemyId])
+    ->execute();
+    }
 	public function createNewFighter($name, $playerId)
 	{
 		$newFighter = $this->newEntity();

@@ -90,26 +90,53 @@ $password = $this->request->data['password'];
     	//test
     	if ($this->request->params['pass']) {
     		$this->loadModel('Fighters');
-    		$info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
 
-    		$info2 = $this->Fighters->ennemyRecover($this->request->session()->read('choosenPlayer'));
+    		if ($this->Fighters->infoRecover($this->request->session()->read('Session.id'))) {
+    			$info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
+    		}else{
+    			$info = null;
+    		}
+    		
+    		if ($this->Fighters->ennemyRecover($this->request->session()->read('choosenPlayer'))) {
+    			$info2 = $this->Fighters->ennemyRecover($this->request->session()->read('choosenPlayer'));
+    		}else{
+    			$info2 = null;
+    		}
+
+    		
     	/*$this->set('x_attack', $this->request->params['pass'][0]);
     	$this->set('y_attack', $this->request->params['pass'][1]);
     	}else{
     	$this->set('x_attack', null);
     	$this->set('y_attack', null);*/  
+    	// partie attaque
     	if ($info2[0]['coordinate_x']==$this->request->params['pass'][1]) {
     	  			if ($info2[0]['coordinate_y']==$this->request->params['pass'][0]) {
     	  				if ($info[0]['coordinate_x']==$this->request->params['pass'][1] or $info[0]['coordinate_x']+1==$this->request->params['pass'][1] or $info[0]['coordinate_x']-1==$this->request->params['pass'][1]) {
     	  					if ($info[0]['coordinate_y']==$this->request->params['pass'][0] or $info[0]['coordinate_y']+1==$this->request->params['pass'][0] or $info[0]['coordinate_y']-1==$this->request->params['pass'][0]) {
     	  						
-    	  					
-    		echo "touché";
+    	  	if (rand(1,20)>10 + $info2[0]['level'] - $info[0]['level']) {
+    	  			echo "vous reussissez votre attaque";
+    	  			$this->Fighters->attack($info2[0]['current_health'],$info[0]['skill_strength'],$info2[0]['player_id']);
+    	  			if ($info2[0]['current_health']<=0) {
+    	  				$dead=$this->Fighters->get($info2[0]['id']);
+    	  				$this->Fighters->delete($dead);
+    	  			}
+    	  			echo $info2[0]['current_health'];
+    	  			echo $info[0]['skill_strength'];	
+    	  	}else{
+    	  			echo "vous ratez votre attaque";
+    	  	}		
+    		
     		echo $info2[0];
     	}else{
     		echo "Error: raté: vous êtes trop loin de la cible";
     	}
+    	}else{
+    		echo "Error: raté: vous êtes trop loin de la cible";
     	}
+    	}else{
+    		echo "Error: raté: vous êtes trop loin de la cible";
     	}
     	}  		
     	
