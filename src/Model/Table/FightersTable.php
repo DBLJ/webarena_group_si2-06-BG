@@ -35,7 +35,7 @@ class FightersTable extends Table
     }
     public function ennemyRecover($id){
         $fighters= \Cake\ORM\TableRegistry::get('Fighters');
-        $info=$fighters->find('all', array('conditions'=>array('player_id !='=>$id)))->toArray();
+        $info=$fighters->find('all', array('conditions'=>array('player_id ='=>$id)))->toArray();
         return($info);
     }
 
