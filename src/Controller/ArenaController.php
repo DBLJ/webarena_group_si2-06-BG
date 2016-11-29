@@ -117,41 +117,65 @@ $password = $this->request->data['password'];
             if ($info) {
 
             if ($this->request->data['process'] == "move_x") {
-                if ($info[0]['coordinate_x'] < 14) {
+                if ($info[0]['coordinate_x'] < 14){
+                 if ($info[0]['coordinate_x']+1!=$info2[0]['coordinate_x'] or $info[0]['coordinate_y']!=$info2[0]['coordinate_y']) {
                     $this->Fighters->moveFighter($info[0]['coordinate_x'],1,$sessionId);
             		$this->redirect("/Arena/sight");
 
                 }else{
-                	echo "Error: vous ne pouvez pas faire ce mouvement";
+                	echo "Error: vous ne pouvez pas faire ce mouvement:" ;  
+                	echo " un ennemi est sur votre route";             	
+                }
+            	}else{
+                	echo "Error: vous ne pouvez pas faire ce mouvement:" ;
+                	echo " vous sortez de l'arene" ;              	
                 }
             }
 
             if ($this->request->data['process'] == "move_x1") {
                 if ($info[0]['coordinate_x'] > 0) {
+                	if ($info[0]['coordinate_x']-1!=$info2[0]['coordinate_x'] or $info[0]['coordinate_y']!=$info2[0]['coordinate_y']) {
                     $this->Fighters->moveFighter($info[0]['coordinate_x'],2,$sessionId);
             		$this->redirect("/Arena/sight");
                 }else{
-                	echo "Error: vous ne pouvez pas faire ce mouvement";
+                	echo "Error: vous ne pouvez pas faire ce mouvement:" ;  
+                	echo " un ennemi est sur votre route";             	
+                }
+                }else{
+                	echo "Error: vous ne pouvez pas faire ce mouvement:";
+                	echo " vous sortez de l'arene" ;
                 }
             }
 
             if ($this->request->data['process'] == "move_y1") {
                 if ($info[0]['coordinate_y'] < 9) {
+                	if ($info[0]['coordinate_x']!=$info2[0]['coordinate_x'] or $info[0]['coordinate_y']+1!=$info2[0]['coordinate_y']) {
                     $this->Fighters->moveFighter($info[0]['coordinate_y'],3,$sessionId);
             		$this->redirect("/Arena/sight");
 
                 }else{
-                	echo "Error: vous ne pouvez pas faire ce mouvement";
+                	echo "Error: vous ne pouvez pas faire ce mouvement:" ;  
+                	echo " un ennemi est sur votre route";             	
+                }
+                }else{
+                	echo "Error: vous ne pouvez pas faire ce mouvement:";
+                	echo " vous sortez de l'arene" ;
                 }
             }
 
             if ($this->request->data['process'] == "move_y") {
                 if ($info[0]['coordinate_y'] > 0) {
+                	if ($info[0]['coordinate_x']!=$info2[0]['coordinate_x'] or $info[0]['coordinate_y']-1!=$info2[0]['coordinate_y']) {
                     $this->Fighters->moveFighter($info[0]['coordinate_y'],4,$sessionId);
             		$this->redirect("/Arena/sight");
 
                 }else{
-                	echo "Error: vous ne pouvez pas faire ce mouvement";
+                	echo "Error: vous ne pouvez pas faire ce mouvement:" ;  
+                	echo " un ennemi est sur votre route";             	
+                }
+                }else{
+                	echo "Error: vous ne pouvez pas faire ce mouvement:";
+                	echo " vous sortez de l'arene" ;
                 }
             }
 
