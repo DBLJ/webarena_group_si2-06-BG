@@ -96,8 +96,7 @@
 		</ul>
 		</form>
 	<?php 
-		echo($ennemy[0]);
-		echo($test);
+		
 	?>
 	</div>
 	</div>
@@ -108,6 +107,8 @@
 	$y= 9;
 	$nombre_de_ligne = 0;
 	$nombre_de_colonne = 0;
+	if ($choosenPlayer) {
+	
 	while ($nombre_de_colonne <= $y) {
 		echo '<div class="gameblock_container">';	
 		while ($nombre_de_ligne <= $x)
@@ -178,6 +179,9 @@
 		$nombre_de_ligne = 0;
 		$nombre_de_colonne++;
 	}
+}else{
+	echo "veuillez selectionner un joueur";
+}
 	?>
 	</div>
 </div>

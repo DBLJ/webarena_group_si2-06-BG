@@ -90,7 +90,7 @@ $password = $this->request->data['password'];
     	if ($this->request->session()->check('Session.id')) {
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
-            $info2 = $this->Fighters->ennemyRecover($this->request->session()->read('Session.id'));
+            $info2 = $this->Fighters->ennemyRecover($this->request->session()->read('choosenPlayer'));
             //$test = $this->request->session()->read('test');
             if ($info) {
                 $this->set('perso', $info);
@@ -149,13 +149,15 @@ $password = $this->request->data['password'];
             }
 
             if ($this->request->data['process'] == "choosePlayer") { //getPlayerid to get the ennemy on map
-            	$playerName=$this->Fighters->getPlayerId($this->request->data['playerName']);
+            	$request=$this->request->data['playerName'];
+            	$playerName=$this->Fighters->getPlayerId($request);
             	/*if ($playerName) {
             		$this->Fighters->set('test',$playerName);
             		$this->redirect("/Arena/sight");
             	}*/
             	//$this->request->Session()->write('test', 1);  
-            	$this->set('test',$this->request->data['playerName']);
+            	$this->set('choosenPlayer',$playerName[0]['id']);
+            	$this->request->Session()->write('choosenPlayer',$playerName[0]['id'] );
             }
             } else {
             $this->redirect("/Arena/fighter");
