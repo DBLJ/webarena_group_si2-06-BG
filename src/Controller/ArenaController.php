@@ -91,6 +91,7 @@ $password = $this->request->data['password'];
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
             $info2 = $this->Fighters->ennemyRecover($this->request->session()->read('choosenPlayer'));
+            $info4 = $this->Fighters->getAllPlayers($this->request->session()->read('Session.id'));
             if ($this->request->session()->read('choosenPlayer')) { //if no choosenplayer set to null
             $info3 = $this->set('choosenPlayer',$this->request->session()->read('choosenPlayer'));
             }else{
@@ -101,6 +102,7 @@ $password = $this->request->data['password'];
                 $this->set('perso', $info);
                 $this->set('ennemy',$info2);
                 $this->set('choosenPlayer',$info3);
+                $this->set('playerList',$info4);
             }
             // todo : only admin player can execute this function_exists(function_name)
             $this->loadModel('surroundings');
@@ -163,7 +165,8 @@ $password = $this->request->data['password'];
             	//$this->request->Session()->write('test', 1);  
             	
             	$this->request->Session()->write('choosenPlayer',$playerName[0]['id'] );
-            	$this->set('choosenPlayer',$this->request->session()->read('choosenPlayer'));
+            	$this->set('choosenPlayer',$playerName[0]['id']);
+            	$this->redirect("/Arena/sight"); // counter bug when user have to double clic to see the map appear
             }
             } else {
             $this->redirect("/Arena/fighter");

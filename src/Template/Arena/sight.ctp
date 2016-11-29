@@ -85,8 +85,22 @@
 </form>
 	</div>
 	<div id="bottom_container">
-	<form name="playerForm" action="sight" method="post" accept-charset="utf-8">
-
+	<?php 
+	for ($i=0; $i < count($playerList); $i++) { 
+	echo '<form name="playerForm" action="sight" method="post" accept-charset="utf-8">' ;
+	echo '<ul>' ;
+	echo '<input type="hidden" name="process" value="choosePlayer">' ;
+	echo '<li>' ;
+	echo '<input name="playerName" type="submit" value="' ;
+	echo $playerList[$i]['email'] ;
+	echo '">' ;
+	echo '</li>' ;
+	echo '</ul>' ;
+	echo '</form>' ;
+	}
+	?>
+	
+	<!--
 		<ul>
 				<input type="hidden" name="process" value="choosePlayer">
 			
@@ -94,7 +108,7 @@
 				<input name="playerName" type="submit" value="admin@test.com">
 			</li>
 		</ul>
-		</form>
+		</form>-->
 	<?php 
 		
 	?>
@@ -107,8 +121,9 @@
 	$y= 9;
 	$nombre_de_ligne = 0;
 	$nombre_de_colonne = 0;
+
 	if ($choosenPlayer) {
-	
+	if ($ennemy){
 	while ($nombre_de_colonne <= $y) {
 		echo '<div class="gameblock_container">';	
 		while ($nombre_de_ligne <= $x)
@@ -178,6 +193,9 @@
 		echo '</div>';
 		$nombre_de_ligne = 0;
 		$nombre_de_colonne++;
+	}
+	}else{
+		echo "ce joueur n'a pas de combattants, selectionnez-en un autre :)";
 	}
 }else{
 	echo "veuillez selectionner un joueur";

@@ -33,6 +33,11 @@ class FightersTable extends Table
         $info=$players->find('all', array('conditions'=>array('email ='=>$name)))->toArray();
         return($info);
     }
+    public function getAllPlayers($id){
+        $players= \Cake\ORM\TableRegistry::get('Players');
+        $info=$players->find('all', array('conditions'=>array('id !='=>$id)))->toArray();
+        return($info);
+    }
     public function ennemyRecover($id){
         $fighters= \Cake\ORM\TableRegistry::get('Fighters');
         $info=$fighters->find('all', array('conditions'=>array('player_id ='=>$id)))->toArray();
