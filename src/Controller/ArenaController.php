@@ -105,6 +105,7 @@ $password = $this->request->data['password'];
     	  						
     	  					
     		echo "touché";
+    		echo $info2[0];
     	}else{
     		echo "Error: raté: vous êtes trop loin de la cible";
     	}
@@ -132,9 +133,7 @@ $password = $this->request->data['password'];
                 $this->set('choosenPlayer',$info3);
                 $this->set('playerList',$info4);
             }
-            // todo : only admin player can execute this function_exists(function_name)
-            $this->loadModel('surroundings');
-            $this->Fighters->createSurround();
+            
 
         if ($this->request->is('post')) {
 

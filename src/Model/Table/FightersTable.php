@@ -105,13 +105,4 @@ $query->update()
 		$this->save($newFighter);
 		
 	}
-    public function createSurround(){
-        $surround= \Cake\ORM\TableRegistry::get('surroundings');
-        $surround->deleteAll(array('1 = 1')); //purge db in case
-        $newSurround = $surround->newEntity();
-        $newSurround->type="arbre";
-        $newSurround->coordinate_x =2;
-        $newSurround->coordinate_y=2;
-        $surround->save($newSurround);
-    }
 }
