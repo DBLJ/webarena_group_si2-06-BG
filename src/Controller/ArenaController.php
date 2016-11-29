@@ -91,11 +91,12 @@ $password = $this->request->data['password'];
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
             $info2 = $this->Fighters->ennemyRecover($this->request->session()->read('choosenPlayer'));
+            $info3 = $this->set('choosenPlayer',$this->request->session()->read('choosenPlayer'));
             //$test = $this->request->session()->read('test');
             if ($info) {
                 $this->set('perso', $info);
                 $this->set('ennemy',$info2);
-                
+                $this->set('choosenPlayer',$info3);
             }
             // todo : only admin player can execute this function_exists(function_name)
             $this->loadModel('surroundings');
@@ -156,8 +157,9 @@ $password = $this->request->data['password'];
             		$this->redirect("/Arena/sight");
             	}*/
             	//$this->request->Session()->write('test', 1);  
-            	$this->set('choosenPlayer',$playerName[0]['id']);
+            	
             	$this->request->Session()->write('choosenPlayer',$playerName[0]['id'] );
+            	$this->set('choosenPlayer',$this->request->session()->read('choosenPlayer'));
             }
             } else {
             $this->redirect("/Arena/fighter");
