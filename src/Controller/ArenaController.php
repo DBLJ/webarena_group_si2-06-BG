@@ -91,7 +91,11 @@ $password = $this->request->data['password'];
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
             $info2 = $this->Fighters->ennemyRecover($this->request->session()->read('choosenPlayer'));
+            if ($this->request->session()->read('choosenPlayer')) { //if no choosenplayer set to null
             $info3 = $this->set('choosenPlayer',$this->request->session()->read('choosenPlayer'));
+            }else{
+            	$info3=null;
+            }
             //$test = $this->request->session()->read('test');
             if ($info) {
                 $this->set('perso', $info);
