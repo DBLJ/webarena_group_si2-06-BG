@@ -87,6 +87,34 @@ $password = $this->request->data['password'];
 
     public function sight() {
     	
+    	//test
+    	if ($this->request->params['pass']) {
+    		$this->loadModel('Fighters');
+    		$info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
+
+    		$info2 = $this->Fighters->ennemyRecover($this->request->session()->read('choosenPlayer'));
+    	/*$this->set('x_attack', $this->request->params['pass'][0]);
+    	$this->set('y_attack', $this->request->params['pass'][1]);
+    	}else{
+    	$this->set('x_attack', null);
+    	$this->set('y_attack', null);*/  
+    	if ($info2[0]['coordinate_x']==$this->request->params['pass'][1]) {
+    	  			if ($info2[0]['coordinate_y']==$this->request->params['pass'][0]) {
+    	  				if ($info[0]['coordinate_x']==$this->request->params['pass'][1] or $info[0]['coordinate_x']+1==$this->request->params['pass'][1] or $info[0]['coordinate_x']-1==$this->request->params['pass'][1]) {
+    	  					if ($info[0]['coordinate_y']==$this->request->params['pass'][0] or $info[0]['coordinate_y']+1==$this->request->params['pass'][0] or $info[0]['coordinate_y']-1==$this->request->params['pass'][0]) {
+    	  						
+    	  					
+    		echo "touché";
+    	}else{
+    		echo "Error: raté: vous êtes trop loin de la cible";
+    	}
+    	}
+    	}
+    	}  		
+    	
+    	}
+
+    	//
     	if ($this->request->session()->check('Session.id')) {
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));

@@ -86,6 +86,8 @@
 	</div>
 	<div id="bottom_container">
 	<?php 
+	/*echo $x_attack;
+	echo $y_attack;*/
 	for ($i=0; $i < count($playerList); $i++) { 
 	echo '<form name="playerForm" action="sight" method="post" accept-charset="utf-8">' ;
 	echo '<ul>' ;
