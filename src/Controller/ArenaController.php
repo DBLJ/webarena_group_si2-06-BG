@@ -119,7 +119,8 @@ $password = $this->request->data['password'];
     	  			echo "vous reussissez votre attaque";
     	  			$this->Fighters->exp_atck($info[0]['player_id'],$info[0]['xp']);
     	  			$this->Fighters->attack($info2[0]['current_health'],$info[0]['skill_strength'],$info2[0]['player_id']);
-    	  			if ($info2[0]['current_health']<=0) {
+    	  			if ($info2[0]['current_health']-1 <= 0) {
+    	  				$this->Fighters->exp_atck_dead($info[0]['player_id'],$info[0]['xp'],$info2[0]['level']);
     	  				$dead=$this->Fighters->get($info2[0]['id']);
     	  				$this->Fighters->delete($dead);
     	  			}

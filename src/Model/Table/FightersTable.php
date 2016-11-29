@@ -101,9 +101,18 @@ $query->update()
     ->execute();
     }
     public function exp_atck($id,$current_xp){
-    $query = $this->query();
+    
+        $query = $this->query();
     $query->update()
     ->set(['xp' => ($current_xp+1)])
+    ->where(['player_id' => $id])
+    ->execute();
+    }
+
+    public function exp_atck_dead($id,$current_xp,$level){
+        $query = $this->query();
+    $query->update()
+    ->set(['xp' => ($current_xp+$level+1)])
     ->where(['player_id' => $id])
     ->execute();
     }
