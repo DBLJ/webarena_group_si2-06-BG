@@ -117,6 +117,7 @@ $password = $this->request->data['password'];
     	  						
     	  	if (rand(1,20)>10 + $info2[0]['level'] - $info[0]['level']) {
     	  			echo "vous reussissez votre attaque";
+    	  			$this->Fighters->exp_atck($info[0]['player_id'],$info[0]['xp']);
     	  			$this->Fighters->attack($info2[0]['current_health'],$info[0]['skill_strength'],$info2[0]['player_id']);
     	  			if ($info2[0]['current_health']<=0) {
     	  				$dead=$this->Fighters->get($info2[0]['id']);

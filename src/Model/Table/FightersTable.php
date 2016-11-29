@@ -100,6 +100,13 @@ $query->update()
     ->where(['player_id' => $ennemyId])
     ->execute();
     }
+    public function exp_atck($id,$current_xp){
+    $query = $this->query();
+    $query->update()
+    ->set(['xp' => ($current_xp+1)])
+    ->where(['player_id' => $id])
+    ->execute();
+    }
 	public function createNewFighter($name, $playerId)
 	{
 		$newFighter = $this->newEntity();
