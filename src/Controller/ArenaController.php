@@ -86,8 +86,16 @@ $password = $this->request->data['password'];
     }
 
     public function sight() {
+
     	
-    	//test
+    	if ($this->request->session()->check('Session.id')) {
+    		$this->loadModel('Fighters');
+            $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
+            if (!$info) {
+
+    		//test
+    	$this->loadModel('Fighters');
+    	$info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));	
     	if ($this->request->params['pass']) {
     		$this->loadModel('Fighters');
 
@@ -145,7 +153,6 @@ $password = $this->request->data['password'];
     	}
 
     	//
-    	if ($this->request->session()->check('Session.id')) {
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
             $info2 = $this->Fighters->ennemyRecover($this->request->session()->read('choosenPlayer'));
@@ -170,7 +177,6 @@ $password = $this->request->data['password'];
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
 	    	$sessionId = $this->request->session()->read('Session.id');
 
-            if ($info) {
 
             if ($this->request->data['process'] == "move_x") {
                 if ($info[0]['coordinate_x'] < 14){
