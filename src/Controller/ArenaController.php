@@ -91,7 +91,7 @@ $password = $this->request->data['password'];
     	if ($this->request->session()->check('Session.id')) {
     		$this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
-            if (!$info) {
+            //if ($info) {
 
     		//test
     	$this->loadModel('Fighters');
@@ -254,12 +254,15 @@ $password = $this->request->data['password'];
             	$this->set('choosenPlayer',$playerName[0]['id']);
             	$this->redirect("/Arena/sight"); // counter bug when user have to double clic to see the map appear
             }
-            } else {
+            /*} else {
             $this->redirect("/Arena/fighter");
-        	}
+        	}*/
         	}
         	} else {
             $this->redirect("/Arena/login");
+        	}
+        	if (!$info) {
+        		$this->redirect("/Arena/fighter");
         	}
         
     }
