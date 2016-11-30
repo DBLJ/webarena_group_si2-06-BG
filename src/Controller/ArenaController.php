@@ -54,6 +54,8 @@ $password = $this->request->data['password'];
     }
 
     public function fighter() {
+	$checkPosition = 1;
+	$i = 0;
         if ($this->request->session()->check('Session.id')) {
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
@@ -74,9 +76,25 @@ $password = $this->request->data['password'];
                 echo('<p>Créez votre perso</p>');
 		if($this->request->is('post'))	
 		{
+			$info = $this->Fighters->infoRecoverOthers($this->request->session()->read('Session.id'));
+			$length = count($info);
+			while(($i < $length) | ($checkPosition == 0))
+			{
+				for($i=0;$i < $length ; $i++)
+				{
+					$position_x = mt_rand(0,14);
+					$position_y = mt_rand(0,9);
+
+					if(($position_x == $info[$i]['coordinate_x']) && ($position_y == $info[$i]['coordinate_y']))
+					{
+						$checkPosition = 0;
+						break;
+					}
+				}
+			}
 			$name = $this->request->data['fighterName'];
 			$playerId = $this->request->Session()->read('Session.id');
-			$this->Fighters->createNewFighter($name, $playerId);
+			$this->Fighters->createNewFighter($name, $playerId, $position_x, $position_y);
 			$this->redirect("/Arena/fighter");
 		}
             }
