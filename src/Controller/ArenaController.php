@@ -73,6 +73,10 @@ $password = $this->request->data['password'];
                     if($tab){
                     $this->set('nomguild', $tab);}
                 }
+            $infoForNext = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
+                    $this->request->Session()->write('xp_actuel',$infoForNext[0]['xp']);
+
+
             } else {	
                 echo('<p>Créez votre perso</p>');
 		if($this->request->is('post'))	
@@ -188,13 +192,15 @@ $password = $this->request->data['password'];
     	}else{
     		echo "Error: raté: vous êtes trop loin de la cible";
     	}
-    	}  		
-    	if ($info[0]['xp']>= 4) { // check if level up 
+    	}
+    	$test = $this->request->session()->read('xp_actuel');  		
+    	if ($info[0]['xp']-$test>= 4) { // check if level up 
     	  				echo " level up ! augmentez vos caracteristiques dans l'onglet combattants";
     	  				$this->Fighters->addLevel($info[0]['player_id'],$info[0]['level']);
-    	  				$this->Fighters->changexp($info[0]['player_id'],$info[0]['xp']);
+    	  				$this->request->session()->write('xp_actuel',$info[0]['xp']);
     	  			} 
     	}
+
 
     	//
             $this->loadModel('Fighters');
