@@ -80,11 +80,10 @@ $password = $this->request->data['password'];
 			$length = count($info);
 			while(($i < $length) | ($checkPosition == 0))
 			{
+				$position_x = mt_rand(0,14);
+				$position_y = mt_rand(0,9);
 				for($i=0;$i < $length ; $i++)
 				{
-					$position_x = mt_rand(0,14);
-					$position_y = mt_rand(0,9);
-
 					if(($position_x == $info[$i]['coordinate_x']) && ($position_y == $info[$i]['coordinate_y']))
 					{
 						$checkPosition = 0;
@@ -134,7 +133,8 @@ $password = $this->request->data['password'];
     	$this->set('y_attack', $this->request->params['pass'][1]);
     	}else{
     	$this->set('x_attack', null);
-    	$this->set('y_attack', null);*/  
+    	$this->set('y_attack', null);*/ 
+    	
     	// partie attaque
     	if ($info2[0]['coordinate_x']==$this->request->params['pass'][1]) {
     	  			if ($info2[0]['coordinate_y']==$this->request->params['pass'][0]) {
@@ -150,13 +150,13 @@ $password = $this->request->data['password'];
     	  				$dead=$this->Fighters->get($info2[0]['id']);
     	  				$this->Fighters->delete($dead);
     	  			}
-    	  			echo $info2[0]['current_health'];
-    	  			echo $info[0]['skill_strength'];	
+
+
+
     	  	}else{
     	  			echo "vous ratez votre attaque";
     	  	}		
     		
-    		echo $info2[0];
     	}else{
     		echo "Error: raté: vous êtes trop loin de la cible";
     	}
@@ -167,7 +167,11 @@ $password = $this->request->data['password'];
     		echo "Error: raté: vous êtes trop loin de la cible";
     	}
     	}  		
-    	
+    	if ($info[0]['xp']>= 4) { // check if level up 
+    	  				echo " level up ! augmentez vos caracteristiques dans l'onglet combattants";
+    	  				$this->Fighters->addLevel($info[0]['player_id'],$info[0]['level']);
+    	  				$this->Fighters->changexp($info[0]['player_id'],$info[0]['xp']);
+    	  			} 
     	}
 
     	//

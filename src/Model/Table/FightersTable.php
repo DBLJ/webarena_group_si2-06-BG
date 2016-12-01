@@ -122,6 +122,21 @@ $query->update()
     ->where(['player_id' => $id])
     ->execute();
     }
+
+    public function addLevel($id,$level){
+        $query = $this->query();
+    $query->update()
+    ->set(['level' => ($level+1)])
+    ->where(['player_id' => $id])
+    ->execute();
+    }
+    public function changexp($id,$xp){
+        $query = $this->query();
+    $query->update()
+    ->set(['xp' => ($xp-4)])
+    ->where(['player_id' => $id])
+    ->execute();
+    }
 	public function createNewFighter($name, $playerId, $coordinate_x, $coordinate_y)
 	{
 		$newFighter = $this->newEntity();
