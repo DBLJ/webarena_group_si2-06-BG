@@ -131,6 +131,7 @@
 		while ($nombre_de_ligne <= $x)
 		{
 		//perso 0
+
 		if ($perso[0]['coordinate_x']==$nombre_de_ligne and $perso[0]['coordinate_y']==$nombre_de_colonne) {
 			echo '<div class="gameblock" id="gb';
     		echo $nombre_de_colonne;
@@ -143,7 +144,7 @@
     		echo ')" style="background-color:green;"></div>';
 		    $nombre_de_ligne++;
 		}
-		elseif (($ennemy[0]['coordinate_x']==$nombre_de_ligne and $ennemy[0]['coordinate_y']==$nombre_de_colonne)){
+		elseif (($ennemy[0]['coordinate_x']==$nombre_de_ligne and $ennemy[0]['coordinate_y']==$nombre_de_colonne and abs($nombre_de_ligne-$perso[0]['coordinate_x'])+abs($nombre_de_colonne-$perso[0]['coordinate_y'])<=$perso[0]['skill_sight'])){
 			echo '<div class="gameblock" id="gb';
     		echo $nombre_de_colonne;
     		echo '';
@@ -153,6 +154,18 @@
     		echo ',';
     		echo $nombre_de_ligne;
     		echo ')" style="background-color:yellow;"></div>';
+		    $nombre_de_ligne++;
+		}
+		elseif (abs($nombre_de_ligne-$perso[0]['coordinate_x'])+abs($nombre_de_colonne-$perso[0]['coordinate_y'])<=$perso[0]['skill_sight']) {
+			echo '<div class="gameblock" id="gb';
+    	echo $nombre_de_colonne;
+    	echo '';
+    	echo $nombre_de_ligne;
+    	echo '" onclick="test(';
+    	echo $nombre_de_colonne;
+    	echo ',';
+    	echo $nombre_de_ligne;
+    	echo ')" style="background-color:darkgrey;"></div>';
 		    $nombre_de_ligne++;
 		}
 		else{
