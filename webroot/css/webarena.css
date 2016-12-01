@@ -140,12 +140,17 @@ justify-content: center;
     display: none;
     z-index: 100;
 }
-<<<<<<< HEAD
 .show{
     display:block;
 }
 .hidden{
     display:none;
 }
-=======
->>>>>>> fd83de673cb1201d98088ce5b9cd36a000af4863
+#div1{
+    position : relative;
+    background-color: blue;
+    margin-right: 30%;
+    margin-left: 30%;
+    margin-top: 10%;
+    width : 30%;
+}

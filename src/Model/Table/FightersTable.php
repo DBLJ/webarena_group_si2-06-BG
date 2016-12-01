@@ -159,4 +159,9 @@ $query->update()
 		$this->save($newFighter);
 		
 	}
+        
+        public function levelupdate($xp,$level,$id){
+            $this->update()->set(['xp' => ($xp-4)])->where(['player_id' => $id])->execute();
+            $this->update()->set(['level' => ($level+1)])->where(['player_id' => $id])->execute();
+        }
 }
