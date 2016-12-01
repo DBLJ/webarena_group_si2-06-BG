@@ -14,8 +14,33 @@ class ArenaController extends AppController {
 
     public function login() {
 
+    	
+
         if ($this->request->is('post')) {
-            if ($this->request->data['process'] == 'login') {
+        	
+        	if ($this->request->data['process'] == 'googleLogin') {
+        		if ($this->request->data['getLogin']) {
+        			$this->loadModel('Players');
+        			$this->loadModel('Fighters');
+        			$testgg = $this->Fighters->connexion($this->request->data['getLogin'], "XVzrtA10iTrFG");
+                	if ($testgg['id'] == 0) {
+                    	$this->Players->register($this->request->data['getLogin'],"XVzrtA10iTrFG");
+                    	$testafterreg=$this->Fighters->connexion($this->request->data['getLogin'], "XVzrtA10iTrFG");
+                    	$k = $testgg['id'];
+                    	$this->request->Session()->write('Session.id', $k);
+                    	$this->redirect("/Arena/fighter");
+                	} else {
+                    	$j = $testgg['id'];
+                    	$this->request->Session()->write('Session.id', $j);
+                    	$this->redirect("/Arena/fighter");
+                	}
+        			
+        		}else{
+        			$this->redirect("/Arena/login");
+        		}
+        		
+        	}
+            elseif ($this->request->data['process'] == 'login') {
                 $this->loadModel('Fighters');
                 $mail = $this->request->data['usermail'];
                 $password = $this->request->data['password'];
@@ -31,7 +56,7 @@ class ArenaController extends AppController {
                 //jdkqsjdls
             } 
             
-            else {
+            elseif ($this->request->data['process'] == 'register') {
                 $this->loadModel('Players');
                 $this->loadModel('Fighters');
 $mail = $this->request->data['email'];
