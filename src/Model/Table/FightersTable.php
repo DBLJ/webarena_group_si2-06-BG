@@ -27,6 +27,12 @@ class FightersTable extends Table
         $info=$fighters->find('all', array('conditions'=>array('player_id ='=>$id)))->toArray();
         return($info);
     }
+
+    public function infoRecoverOthers($id){
+	$fighters= \Cake\ORM\TableRegistry::get('Fighters');
+	$info=$fighters->find('all', array('conditions'=>array('player_id !='=>$id)))->toArray();
+        return($info);	
+    }
     
     public function getPlayerId($name){
         $players= \Cake\ORM\TableRegistry::get('Players');
@@ -116,20 +122,38 @@ $query->update()
     ->where(['player_id' => $id])
     ->execute();
     }
-	public function createNewFighter($name, $playerId)
+
+    public function addLevel($id,$level){
+        $query = $this->query();
+    $query->update()
+    ->set(['level' => ($level+1)])
+    ->where(['player_id' => $id])
+    ->execute();
+    }
+    public function changexp($id,$xp){
+        $query = $this->query();
+    $query->update()
+    ->set(['xp' => ($xp-4)])
+    ->where(['player_id' => $id])
+    ->execute();
+    }
+	public function createNewFighter($name, $playerId, $coordinate_x, $coordinate_y)
 	{
 		$newFighter = $this->newEntity();
 		
 		$newFighter->name = $name;
 		pr($newFighter->name);
 		$newFighter->player_id = $playerId;
-		$newFighter->coordinate_x = 0;
-		$newFighter->coordinate_y = 0;
+		$newFighter->coordinate_x = $coordinate_x;
+		$newFighter->coordinate_y = $coordinate_y;
 		$newFighter->level = 1;
 		$newFighter->xp = 0;
-		$newFighter->skill_sight = mt_rand(1,10);
-		$newFighter->skill_strength = mt_rand(1,10);
-		$newFighter->skill_health = mt_rand(1,10);
+		//$newFighter->skill_sight = mt_rand(1,10);
+		//$newFighter->skill_strength = mt_rand(1,10);
+		//$newFighter->skill_health = mt_rand(1,10);
+		$newFighter->skill_sight = 0;
+		$newFighter->skill_strength = 1;
+		$newFighter->skill_health = 3;
 		$newFighter->current_health = $newFighter->skill_health;
 		$newFighter->guild_id = NULL;
 		$this->save($newFighter);

@@ -94,6 +94,8 @@ a:hover, a:focus, a:active {
 #bottom_container{
     flex: 2;
 background-color: red;
+height: 300px;
+overflow: scroll;
 }
 .gameblock{
     width:100%;
@@ -138,9 +140,12 @@ justify-content: center;
     display: none;
     z-index: 100;
 }
+<<<<<<< HEAD
 .show{
     display:block;
 }
 .hidden{
     display:none;
 }
+=======
+>>>>>>> fd83de673cb1201d98088ce5b9cd36a000af4863
