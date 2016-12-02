@@ -184,7 +184,12 @@ $password = $this->request->data['password'];
 		$fighter_from = $this->Fighters->infoRecover($player_id_from);
 		$fighter_to = $this->Fighters->infoRecover($player_id_to);
 		$id_from = $fighter_from[0]['id'];
-		$id_to = $fighter_to[0]['id'];
+		if ($fighter_to) {
+			$id_to = $fighter_to[0]['id'];
+		}else{
+			$id_to = null;
+		}
+		
 		//if ($this->Fighters->getMessages($id_from, $id_to)){
 		$messages = $this->Fighters->getMessages($id_from, $id_to);
 		$this->set('messages', $messages);	
@@ -251,6 +256,14 @@ $password = $this->request->data['password'];
 
     	  	}else{
     	  			echo "vous ratez votre attaque";
+    	  			$today = date("Y-m-d H:i:s");
+    	  			$fname = $info[0]['name'];
+    	  			$ename = $info2[0]['name'];
+    	  			$pos_x = $info[0]['coordinate_x'];
+    	  			$pos_y =$info[0]['coordinate_y'];
+    	  			$action = "$fname attaque $ename et rate son attaque !";
+    	  			$this->Fighters->addEvent_attackFail($today,$action,$pos_x,$pos_y);
+
     	  	}		
     		
     	}else{

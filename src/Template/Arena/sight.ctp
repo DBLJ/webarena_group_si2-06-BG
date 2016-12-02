@@ -116,10 +116,12 @@
 	?>
 	</div>
 	</div>
-
-	<div id="chat_container">
-		<div id="discussion">
-		<?php
+	<?php 
+	if ($choosenPlayer) {
+		if ($ennemy){
+	echo '<div id="chat_container">';
+	echo '<div id="discussion">';
+		//<?php
 		if($messages == 'undef'){
 		echo '<p> choisir un joueur</p>';
 		}else{
@@ -129,21 +131,21 @@
 			echo '<p>'.$messages[$i]['message'].'</p>';
 		}
 		}
-		?>
-		</div>
+		
+		echo '</div>';
 
-		<div id="input_field">
-			<form name="chat_form" action="sight" method="post" accept-charset="utf-8">
+		echo '<div id="input_field">';
+		echo '<form name="chat_form" action="sight" method="post" accept-charset="utf-8">';
 			
-			<input type="hidden" name="process" value="send">
-			<input type="text" name="title" size="20" placeholder="Titre">
-			<textarea name="message" rows=2 cols=30 placeholder="Entrez votre message ici"></textarea>
-			<input type="submit" value="envoyer">
+			echo '<input type="hidden" name="process" value="send">';
+			echo '<textarea name="message" rows=2 cols=30 placeholder="Entrez votre message ici"></textarea>';
+			echo '<input type="submit" value="envoyer">';
 			
-			</form>
-		</div>
-	</div>
-
+			echo '</form>';
+		echo '</div>';
+	echo '</div>';
+    }}
+	?>
 	<div id="right_container">
 	<?php
 	#define largeur (x) & longeur (y) of the arena:
