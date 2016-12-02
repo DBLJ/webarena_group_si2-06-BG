@@ -417,6 +417,9 @@ $password = $this->request->data['password'];
             }
 	
 	    if($this->request->data['process'] == "send"){
+	    	if ($this->request->data['send'] == "envoyer") {
+	    		# code...
+	    	
 		$infoMessage=$this->request->session()->read('choosenPlayer');
 		if($infoMessage){
 		$this->loadModel('Fighters');
@@ -432,7 +435,31 @@ $password = $this->request->data['password'];
 			$this->redirect("/Arena/sight");
 		}
 		}
+	    }elseif ($this->request->data['send'] == "crier") {
+	    	$infoMessage=$this->request->session()->read('choosenPlayer');
+		if($infoMessage){
+		$this->loadModel('Fighters');
+		$message = $this->request->data['message'];
+		$title = "shouted";
+		//$fighter_id_from = $this->request->session()->read('Session.id');
+		//$fighter_id = $this->request->session()->read('choosenPlayer');
+		$fighter_id_from = $id_from;
+		$fighter_id = $id_to;
+		$time = Time::now();
+		if(($fighter_id)){
+			$this->Fighters->setMessage($time, $title, $message, $fighter_id_from, $fighter_id);
+			$today = date("Y-m-d H:i:s");
+    	  			$fname = $info[0]['name'];
+    	  			$ename = $info2[0]['name'];
+    	  			$pos_x = $info[0]['coordinate_x'];
+    	  			$pos_y =$info[0]['coordinate_y'];
+    	  			$action = "$fname crie à $ename: $message";
+    	  			$this->Fighters->addEvent_attackFail($today,$action,$pos_x,$pos_y);
+			$this->redirect("/Arena/sight");
+		}
+		}
 	    }
+	}
 	
             /*} else {
             $this->redirect("/Arena/fighter");

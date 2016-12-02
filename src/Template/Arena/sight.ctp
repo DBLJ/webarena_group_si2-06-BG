@@ -138,9 +138,10 @@
 		echo '<form name="chat_form" action="sight" method="post" accept-charset="utf-8">';
 			
 			echo '<input type="hidden" name="process" value="send">';
+			echo '<input type="hidden" name="title" size="20" placeholder="Titre">';
 			echo '<textarea name="message" rows=2 cols=30 placeholder="Entrez votre message ici"></textarea>';
-			echo '<input type="submit" value="envoyer">';
-			
+			echo '<input name="send"type="submit" value="envoyer">';
+			echo '<input name="send" type="submit" value="crier">';
 			echo '</form>';
 		echo '</div>';
 	echo '</div>';
