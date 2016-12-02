@@ -47,7 +47,9 @@ class ArenaController extends AppController {
                 $password = $this->request->data['password'];
 
                 $test = $this->Fighters->connexion($mail, $password);
+
                 if (!$test['id']) {
+
                     $this->redirect("/Arena/login");
                 } else {
                     $i = $test['id'];
@@ -86,6 +88,7 @@ $password = $this->request->data['password'];
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
             if ($info) {
+                 
                 $nb_perso = 0;
                 foreach ($info as $value) {
                     $nb_perso++;
@@ -96,16 +99,52 @@ $password = $this->request->data['password'];
                 if ($info[0]['guild_id']) {
 
                     $tab = $this->Fighters->guildrecover($info[0]['guild_id']);
-                    $this->set('nomguild', $tab);
+                    if($tab){
+                    $this->set('nomguild', $tab);}
                 }
             $infoForNext = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
                     $this->request->Session()->write('xp_actuel',$infoForNext[0]['xp']);
-
+                    
+                    if($this->request->is('post')){
+                     
+                        if($this->request->data['process'] == 'level'){
+                        if(($info[0]['xp'])>3){
+                            
+                            $this->Fighters->levelupdate($info[0]['xp'],$info[0]['level'],$this->request->Session()->read('Session.id'));
+                            $this->redirect("/Arena/fighter");
+                        }
+                    }
+                    if($this->request->data['process'] == 'sight'){
+                        if(($info[0]['xp'])>3){                           
+                            $this->Fighters->sightupdate($info[0]['xp'],$info[0]['skill_sight'],$this->request->Session()->read('Session.id'));
+                            $this->redirect("/Arena/fighter");
+                        }
+                    }
+                    if($this->request->data['process']=='strenght'){
+                        if(($info[0]['xp'])>3){                           
+                            $this->Fighters->strenghtupdate($info[0]['xp'],$info[0]['skill_strength'],$this->request->Session()->read('Session.id'));
+                            $this->redirect("/Arena/fighter");
+                        }
+                    }
+                    if($this->request->data['process']=='health'){
+                        if(($info[0]['xp'])>3){                           
+                            $this->Fighters->healthupdate($info[0]['xp'],$info[0]['skill_health'],$this->request->Session()->read('Session.id'));
+                            $this->redirect("/Arena/fighter");
+                        }
+                    }
+                    if($this->request->data['process']=='currenthealth'){
+                        if(($info[0]['xp'])>3){                           
+                            $this->Fighters->currenthealthupdate($info[0]['xp'],$info[0]['current_health'],$this->request->Session()->read('Session.id'));
+                            $this->redirect("/Arena/fighter");
+                        }
+                    }
+                    }
 
             } else {	
                 echo('<p>Créez votre perso</p>');
 		if($this->request->is('post'))	
 		{
+                    
 			$info = $this->Fighters->infoRecoverOthers($this->request->session()->read('Session.id'));
 			$length = count($info);
 			while(($i < $length) | ($checkPosition == 0))
@@ -125,7 +164,10 @@ $password = $this->request->data['password'];
 			$playerId = $this->request->Session()->read('Session.id');
 			$this->Fighters->createNewFighter($name, $playerId, $position_x, $position_y);
 			$this->redirect("/Arena/fighter");
-		}
+                
+                    
+                    
+                                        }
             }
         } else {
             $this->redirect("/Arena/login");
@@ -220,6 +262,7 @@ $password = $this->request->data['password'];
     	if ($info[0]['xp']-$test>= 4) { // check if level up 
     	  				echo " level up ! augmentez vos caracteristiques dans l'onglet combattants";
     	  				$this->Fighters->addLevel($info[0]['player_id'],$info[0]['level']);
+    	  				$this->Fighters->lifeRecover($info[0]['player_id'],$info[0]['skill_health']);
     	  				$this->request->session()->write('xp_actuel',$info[0]['xp']);
     	  			} 
     	}

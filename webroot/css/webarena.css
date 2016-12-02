@@ -158,3 +158,17 @@ justify-content: center;
     display: none;
     z-index: 100;
 }
+.show{
+    display:block;
+}
+.hidden{
+    display:none;
+}
+#div1{
+    position : relative;
+    background-color: blue;
+    margin-right: 30%;
+    margin-left: 30%;
+    margin-top: 10%;
+    width : 30%;
+}
