@@ -27,3 +27,14 @@ if (arg1=="back") {
 	backbutton.style.display = "none";
 }
 }
+
+function add_message(id1, id2){
+
+	var parent = document.getElementById(id1);
+	var child = document.getElementById(id2);
+	var node = createElement("P");
+	var text = child.value;
+	var text_node = document.createTextNode(text);
+	node.appendchild(text_node);
+	parent.appendchild(node);
+}

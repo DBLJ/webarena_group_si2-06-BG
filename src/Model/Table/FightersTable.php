@@ -57,7 +57,29 @@ class FightersTable extends Table
         return($info);
     }
     
+    public function getMessages($fighterId_source, $fighterId_destination){
+	$messages= \Cake\ORM\TableRegistry::get('Messages');
+	/*$info= $messages->find('all', array('conditions'=>array('fighter_id_from ='=>$fighterId_source, 'fighter_id ='=>$fighterId_destination)))->toArray();*/
+	$info= $messages->find('all')
+		->select(['message'])
+		->where(['fighter_id_from ='=>$fighterId_source, 'fighter_id'=>$fighterId_destination])
+		->orWhere(['fighter_id_from ='=>$fighterId_destination, 'fighter_id'=>$fighterId_source])
+		->toArray();
+	return ($info);
+	
+    }	
     
+    public function setMessage($time, $title, $message, $fighter_id_from, $fighter_id){
+	$messages = \Cake\ORM\TableRegistry::get('Messages');
+	$newMessage = $messages->newEntity();
+	$newMessage->date = $time;
+	$newMessage->title = $title;
+	$newMessage->message = $message;
+	$newMessage->fighter_id_from = $fighter_id_from;
+	$newMessage->fighter_id = $fighter_id;
+	$messages->save($newMessage);
+    }
+
     public function moveFighter($coordonnee,$identifiant_move, $sessionId){
 	
         if($identifiant_move == 1){
