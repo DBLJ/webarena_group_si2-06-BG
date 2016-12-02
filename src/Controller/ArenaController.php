@@ -478,6 +478,52 @@ $password = $this->request->data['password'];
         
     }
 
+    public function guild(){
+
+	if ($this->request->session()->check('Session.id')) 
+	{
+		$this->loadModel('Guilds');
+
+		if($this->request->is('post'))
+		{
+			if ($this->request->data['process'] == 'createGuild')
+			{
+			$guildName = $this->request->data['guildName'];
+			if($guildName)
+			{
+				if(!($this->Guilds->existsGuildSameName($guildName)))
+				{
+					$this->Guilds->setGuild($guildName);
+					$this->redirect("/Arena/guild");
+				}
+			}
+			}
+
+			else //if ($this->request->data['process'] == 'joinGuild')
+			{
+				$this->loadModel('Fighters');
+				$guildId = $this->request->data['process'];
+				$playerId = $this->request->session()->read('Session.id');
+				$fighterId = $this->Fighters->infoRecover($playerId);
+				$this->Fighters->setGuildId($guildId, $fighterId[0]['id']);
+				$this->redirect("/Arena/guild");
+				
+			}
+		}
+		
+		$guilds = $this->Guilds->getGuilds();
+		if($guilds)
+		{
+			$this->set('guilds', $guilds);
+		}
+		else
+		{$this->set('guilds', 'undef');}
+	}
+	else
+		$this->redirect("/Arena/login");
+	    
+    }
+
     public function index() {
         
     }

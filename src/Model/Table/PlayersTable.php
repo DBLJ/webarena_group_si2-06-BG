@@ -22,7 +22,5 @@ class PlayersTable extends Table
              $this->save($newfighter);
              return(1);
          }  
-    }
-    
-    
+    }   
 }
