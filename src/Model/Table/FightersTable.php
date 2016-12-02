@@ -122,7 +122,13 @@ $query->update()
     ->where(['player_id' => $id])
     ->execute();
     }
-
+    public function lifeRecover($id,$health_max){
+        $query = $this->query();
+    $query->update()
+    ->set(['current_health' => $health_max])
+    ->where(['player_id' => $id])
+    ->execute();
+    }
     public function exp_atck_dead($id,$current_xp,$level){
         $query = $this->query();
     $query->update()

@@ -114,21 +114,25 @@ $password = $this->request->data['password'];
                     if($this->request->data['process'] == 'sight'){
                         if(($info[0]['xp'])>3){                           
                             $this->Fighters->sightupdate($info[0]['xp'],$info[0]['skill_sight'],$this->request->Session()->read('Session.id'));
+                            $this->redirect("/Arena/fighter");
                         }
                     }
                     if($this->request->data['process']=='strenght'){
                         if(($info[0]['xp'])>3){                           
                             $this->Fighters->strenghtupdate($info[0]['xp'],$info[0]['skill_strength'],$this->request->Session()->read('Session.id'));
+                            $this->redirect("/Arena/fighter");
                         }
                     }
                     if($this->request->data['process']=='health'){
                         if(($info[0]['xp'])>3){                           
                             $this->Fighters->healthupdate($info[0]['xp'],$info[0]['skill_health'],$this->request->Session()->read('Session.id'));
+                            $this->redirect("/Arena/fighter");
                         }
                     }
                     if($this->request->data['process']=='currenthealth'){
                         if(($info[0]['xp'])>3){                           
                             $this->Fighters->currenthealthupdate($info[0]['xp'],$info[0]['current_health'],$this->request->Session()->read('Session.id'));
+                            $this->redirect("/Arena/fighter");
                         }
                     }
                     }
@@ -243,6 +247,7 @@ $password = $this->request->data['password'];
     	if ($info[0]['xp']-$test>= 4) { // check if level up 
     	  				echo " level up ! augmentez vos caracteristiques dans l'onglet combattants";
     	  				$this->Fighters->addLevel($info[0]['player_id'],$info[0]['level']);
+    	  				$this->Fighters->lifeRecover($info[0]['player_id'],$info[0]['skill_health']);
     	  				$this->request->session()->write('xp_actuel',$info[0]['xp']);
     	  			} 
     	}
