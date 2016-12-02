@@ -152,7 +152,7 @@ $query->update()
 		//$newFighter->skill_sight = mt_rand(1,10);
 		//$newFighter->skill_strength = mt_rand(1,10);
 		//$newFighter->skill_health = mt_rand(1,10);
-		$newFighter->skill_sight = 0;
+		$newFighter->skill_sight = 2;
 		$newFighter->skill_strength = 1;
 		$newFighter->skill_health = 3;
 		$newFighter->current_health = $newFighter->skill_health;
