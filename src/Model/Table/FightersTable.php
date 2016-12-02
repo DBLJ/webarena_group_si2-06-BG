@@ -183,7 +183,7 @@ $query->update()
         public function healthupdate($xp,$health,$id){
             $query = $this->query();
             $query->update()->set(['xp' => ($xp-4)])->where(['player_id' => $id])->execute();
-            $query->update()->set(['skill_health' => ($health+1)])->where(['player_id' => $id])->execute();
+            $query->update()->set(['skill_health' => ($health+3)])->where(['player_id' => $id])->execute();
         }
         
         public function currenthealthupdate($xp,$currenthealth,$id){

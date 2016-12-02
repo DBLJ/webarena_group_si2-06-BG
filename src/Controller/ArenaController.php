@@ -108,6 +108,7 @@ $password = $this->request->data['password'];
                         if(($info[0]['xp'])>3){
                             
                             $this->Fighters->levelupdate($info[0]['xp'],$info[0]['level'],$this->request->Session()->read('Session.id'));
+                            $this->redirect("/Arena/fighter");
                         }
                     }
                     if($this->request->data['process'] == 'sight'){
