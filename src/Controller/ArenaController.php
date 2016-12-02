@@ -318,6 +318,12 @@ $password = $this->request->data['password'];
             if ($this->request->data['process'] == "move_x") {
                 if ($info[0]['coordinate_x'] < 14){
                  if ($info[0]['coordinate_x']+1!=$info2[0]['coordinate_x'] or $info[0]['coordinate_y']!=$info2[0]['coordinate_y']) {
+                    $today = date("Y-m-d H:i:s");
+    	  			$fname = $info[0]['name'];
+    	  			$pos_x = $info[0]['coordinate_x'];
+    	  			$pos_y =$info[0]['coordinate_y'];
+    	  			$action = "$fname se déplace vers la droite";
+    	  			$this->Fighters->addEvent_move($today,$action,$pos_x,$pos_y);
                     $this->Fighters->moveFighter($info[0]['coordinate_x'],1,$sessionId);
             		$this->redirect("/Arena/sight");
 
@@ -334,6 +340,12 @@ $password = $this->request->data['password'];
             if ($this->request->data['process'] == "move_x1") {
                 if ($info[0]['coordinate_x'] > 0) {
                 	if ($info[0]['coordinate_x']-1!=$info2[0]['coordinate_x'] or $info[0]['coordinate_y']!=$info2[0]['coordinate_y']) {
+                    $today = date("Y-m-d H:i:s");
+    	  			$fname = $info[0]['name'];
+    	  			$pos_x = $info[0]['coordinate_x'];
+    	  			$pos_y =$info[0]['coordinate_y'];
+    	  			$action = "$fname se déplace vers la gauche";
+    	  			$this->Fighters->addEvent_move($today,$action,$pos_x,$pos_y);
                     $this->Fighters->moveFighter($info[0]['coordinate_x'],2,$sessionId);
             		$this->redirect("/Arena/sight");
                 }else{
@@ -349,6 +361,12 @@ $password = $this->request->data['password'];
             if ($this->request->data['process'] == "move_y1") {
                 if ($info[0]['coordinate_y'] < 9) {
                 	if ($info[0]['coordinate_x']!=$info2[0]['coordinate_x'] or $info[0]['coordinate_y']+1!=$info2[0]['coordinate_y']) {
+                    $today = date("Y-m-d H:i:s");
+    	  			$fname = $info[0]['name'];
+    	  			$pos_x = $info[0]['coordinate_x'];
+    	  			$pos_y =$info[0]['coordinate_y'];
+    	  			$action = "$fname se déplace vers le bas";
+    	  			$this->Fighters->addEvent_move($today,$action,$pos_x,$pos_y);
                     $this->Fighters->moveFighter($info[0]['coordinate_y'],3,$sessionId);
             		$this->redirect("/Arena/sight");
 
@@ -365,6 +383,12 @@ $password = $this->request->data['password'];
             if ($this->request->data['process'] == "move_y") {
                 if ($info[0]['coordinate_y'] > 0) {
                 	if ($info[0]['coordinate_x']!=$info2[0]['coordinate_x'] or $info[0]['coordinate_y']-1!=$info2[0]['coordinate_y']) {
+                    $today = date("Y-m-d H:i:s");
+    	  			$fname = $info[0]['name'];
+    	  			$pos_x = $info[0]['coordinate_x'];
+    	  			$pos_y =$info[0]['coordinate_y'];
+    	  			$action = "$fname se déplace vers le haut";
+    	  			$this->Fighters->addEvent_move($today,$action,$pos_x,$pos_y);
                     $this->Fighters->moveFighter($info[0]['coordinate_y'],4,$sessionId);
             		$this->redirect("/Arena/sight");
 
