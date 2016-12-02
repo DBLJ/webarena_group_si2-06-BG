@@ -93,6 +93,9 @@ $password = $this->request->data['password'];
                 foreach ($info as $value) {
                     $nb_perso++;
                 }
+                if($info[0]['xp']>3){
+                    $this->set('mavariable',true);
+                }
                 $this->set('perso', $info);
                 $this->set('nb_perso', $nb_perso);
 
@@ -141,7 +144,7 @@ $password = $this->request->data['password'];
                     }
 
             } else {	
-                echo('<p>Créez votre perso</p>');
+                
 		if($this->request->is('post'))	
 		{
                     

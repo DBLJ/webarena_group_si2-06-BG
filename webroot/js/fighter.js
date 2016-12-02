@@ -11,10 +11,3 @@ function showdiv2(){
     document.getElementById('div2').className='show';
 }
 
-function showform(){
-    document.getElementById('form1').className='show';
-    document.getElementById('form2').className='show';
-    document.getElementById('form3').className='show';
-    document.getElementById('form4').className='show';
-    document.getElementById('form5').className='show';
-}
