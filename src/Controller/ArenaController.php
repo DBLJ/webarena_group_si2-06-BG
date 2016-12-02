@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\I18n\Time;
 
 /**
  * Personal Controller
@@ -46,7 +47,7 @@ class ArenaController extends AppController {
                 $password = $this->request->data['password'];
 
                 $test = $this->Fighters->connexion($mail, $password);
-                if ($test['id'] == 0) {
+                if (!$test['id']) {
                     $this->redirect("/Arena/login");
                 } else {
                     $i = $test['id'];
@@ -132,8 +133,20 @@ $password = $this->request->data['password'];
     }
 
     public function sight() {
+	
+	if($this->request->session()->check('choosenPlayer'))
+	{
+		$player_id_from = $this->request->session()->read('Session.id');
+		$player_id_to = $this->request->session()->read('choosenPlayer'); 
+		$this->loadModel('Fighters');
+		$fighter_from = $this->Fighters->infoRecover($player_id_from);
+		$fighter_to = $this->Fighters->infoRecover($player_id_to);
+		$id_from = $fighter_from[0]['id'];
+		$id_to = $fighter_to[0]['id'];
+		$messages = $this->Fighters->getMessages($id_from, $id_to);
+		$this->set('messages', $messages);
+    	}
 
-    	
     	if ($this->request->session()->check('Session.id')) {
     		$this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
@@ -314,6 +327,20 @@ $password = $this->request->data['password'];
             	$this->set('choosenPlayer',$playerName[0]['id']);
             	$this->redirect("/Arena/sight"); // counter bug when user have to double clic to see the map appear
             }
+	
+	    if($this->request->data['process'] == "send"){
+		$this->loadModel('Fighters');
+		$message = $this->request->data['message'];
+		$title = $this->request->data['title'];
+		//$fighter_id_from = $this->request->session()->read('Session.id');
+		//$fighter_id = $this->request->session()->read('choosenPlayer');
+		$fighter_id_from = $id_from;
+		$fighter_id = $id_to;
+		$time = Time::now();
+		if(($fighter_id))
+			$this->Fighters->setMessage($time, $title, $message, $fighter_id_from, $fighter_id);
+	    }
+	
             /*} else {
             $this->redirect("/Arena/fighter");
         	}*/
