@@ -1,7 +1,7 @@
 <?php $this->assign('title', 'titredepage');
 ?>
 <?php echo $this->Html->script('fighter'); ?>
-
+<?php //echo $this->Html->image('gladiator.jpg', ['alt' => 'CakePHP']); ?>
 
 <div id="div1" class="hidden">
 <?php 
@@ -15,62 +15,60 @@ if($nb_perso != 0)
                 ?>
     </br>
     <?php
-        	echo(" Vous etes au niveau ");
+        	echo("Niveau : ");
                 echo($perso [0]['level']);
                 ?>
-    <div id="form1" class="hidden" >
-                <form name="upgrade_level" action="fighter" method="post" accept-charset="utf-8">
-                    <label>Augmentez votre niveau contre 4 XP -></label>
-				<input type="hidden" name="process" value="level">
-				<input type="submit" value="Upgrade">	
-                </form>
+    </br>
+    <div id="form1" class="hidden">               
     </div>
     
     <?php
-                echo('Votre visée est de ');
+                echo('Visée : ');
                 echo($perso[0]['skill_sight']);
                 ?>
-    <div id="form2" class="hidden">
-                <form name="upgrade_skill_sight" action="fighter" method="post" accept-charset="utf-8">
-				<input type="hidden" name="process" value="sight">
-                                <label>Ameliorez votre visée contre 4 XP -></label>
-                                <input  type="submit" value="Upgrade">	
-                </form>
-    </div>
-    <?php
-                echo("Votre force est de ");
-                echo($perso[0]['skill_strength']);
-                ?>
-    <div id="form3" class="hidden">
-                <form name="upgrade_skill_strenght" action="fighter" method="post" accept-charset="utf-8">
-                            <label>Augmentez votre force contre 4 XP -></label>
-				<input type="hidden" name="process" value="strenght">
-				<input type="submit" value="Upgrade">	
-                </form>
-    </div>
-    
-    <?php
-                echo("Votre santé est de ");
-                echo($perso[0]['skill_health']);
-                ?>
-    <div id="form4" class="hidden">
-                <form name="upgrade_skill_health" action="fighter" method="post" accept-charset="utf-8">
-                            <label>Augmentez votre santé contre 4 XP -></label>
-				<input type="hidden" name="process" value="health">
-				<input type="submit" value="Upgrade">	
-                </form>
-    </div>
-    <?php
-                echo('Votre santé actuelle est de ');
+    </br>
+        <?php
+                echo('Santé actuelle : ');
                 echo($perso[0]['current_health']);
                 ?>
-    <div id="form5" class="hidden">
+    </br>    
                 <form name="upgrade_skill_sight" action="fighter" method="post" accept-charset="utf-8">
-                            <label>Augmentez votre santé actuelle contre 4 XP -></label>
-				<input type="hidden" name="process" value="currenthealth">
-				<input type="submit" value="Upgrade">	
+                    <?php if(isset($mavariable)){?>
+				<input type="hidden" name="process" value="sight">
+                                <label>Ameliorez votre visée </label>
+                                <input  type="submit" value="Upgrade">	
+                                <?php }?>
                 </form>
-    </div>
+    
+    <?php
+                echo("Force : ");
+                echo($perso[0]['skill_strength']);
+                ?>
+    </br>
+                <form name="upgrade_skill_strenght" action="fighter" method="post" accept-charset="utf-8">
+                    <?php if(isset($mavariable)){?>
+                            <label>Augmentez votre force </label>
+				<input type="hidden" name="process" value="strenght">
+				<input type="submit" value="Upgrade">
+                                <?php }?>
+                </form>
+    
+    <?php
+                echo("Santé : ");
+                echo($perso[0]['skill_health']);
+                ?>
+    </br>
+                <form name="upgrade_skill_health" action="fighter" method="post" accept-charset="utf-8">
+                    <?php if(isset($mavariable)){?>
+                            <label>Augmentez votre santé </label>
+				<input type="hidden" name="process" value="health">
+                                
+				<input type="submit" value="Upgrade">
+                                <?php }?>
+                </form>
+
+    </br>
+    
     <?php
 		
         
@@ -82,6 +80,7 @@ echo($nomguild[0]['name']);}
 </div>
 
 <div id="div2" class="hidden">
+    <h3>Créez votre combattant</h3>
 <?php echo $this->form->create('fighter', array(
 	'id'=>'CreateFighterForm',
 	'url'=>array(
@@ -96,16 +95,12 @@ echo($nomguild[0]['name']);}
 <?php echo $this->form->end(); ?>
 </div>
 <?php 
+if(isset($nb_perso)){
 if($nb_perso !=0){
     ?>
 <script>showdiv1();</script>
 <?php
-if($perso[0]['xp']>3){
-    ?>
-<script>showform();</script>
-<?php
-}
-}
+}}
 else{
     ?>
     <script>showdiv2();</script>

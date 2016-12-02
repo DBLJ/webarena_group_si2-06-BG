@@ -165,10 +165,27 @@ justify-content: center;
     display:none;
 }
 #div1{
+    position: absolute;
+    background-color: pink;
+    border: 3px blue dashed;
+    border-radius: 10px;
+    margin-left: 10%;
+    margin-top: 15%;
+    margin-top: 0px;
+    width : 20%;
+    margin-top: 5%;
+    z-index: 1;
+    background-image: 
+}
+
+#div2{
     position : relative;
-    background-color: blue;
-    margin-right: 30%;
-    margin-left: 30%;
-    margin-top: 10%;
-    width : 30%;
+    background-color: pink;
+    border: 3px blue dashed;
+    border-radius: 10px;
+    margin-left: 10%;
+    margin-top: 15%;
+    margin-top: 0px;
+    width : 20%;
+    margin-top: 5%;
 }
