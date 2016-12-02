@@ -23,52 +23,54 @@ if($nb_perso != 0)
     </div>
     
     <?php
+                echo('Santé : ');
+                echo($perso[0]['current_health']);
+                echo '/';
+                echo($perso[0]['skill_health']);
+                ?>
+    </br>
+    <div id='first'>
+        <?php
                 echo('Visée : ');
                 echo($perso[0]['skill_sight']);
                 ?>
-    </br>
-        <?php
-                echo('Santé actuelle : ');
-                echo($perso[0]['current_health']);
-                ?>
     </br>    
-                <form name="upgrade_skill_sight" action="fighter" method="post" accept-charset="utf-8">
+                <form class="marginL" name="upgrade_skill_sight" action="fighter" method="post" accept-charset="utf-8">
                     <?php if(isset($mavariable)){?>
 				<input type="hidden" name="process" value="sight">
-                                <label>Ameliorez votre visée </label>
-                                <input  type="submit" value="Upgrade">	
+                                <input  type="submit" value="&#94;">	
                                 <?php }?>
                 </form>
-    
+    </div>
+    <div id='scnd'>
     <?php
                 echo("Force : ");
                 echo($perso[0]['skill_strength']);
                 ?>
     </br>
-                <form name="upgrade_skill_strenght" action="fighter" method="post" accept-charset="utf-8">
+                <form class="marginL" name="upgrade_skill_strenght" action="fighter" method="post" accept-charset="utf-8">
                     <?php if(isset($mavariable)){?>
-                            <label>Augmentez votre force </label>
 				<input type="hidden" name="process" value="strenght">
-				<input type="submit" value="Upgrade">
+				<input type="submit" value="&#94;">
                                 <?php }?>
                 </form>
-    
+    </div>
+    <div id='third'>
     <?php
-                echo("Santé : ");
+                echo("Santé max: ");
                 echo($perso[0]['skill_health']);
                 ?>
     </br>
-                <form name="upgrade_skill_health" action="fighter" method="post" accept-charset="utf-8">
+                <form class="marginL" name="upgrade_skill_health" action="fighter" method="post" accept-charset="utf-8">
                     <?php if(isset($mavariable)){?>
-                            <label>Augmentez votre santé </label>
 				<input type="hidden" name="process" value="health">
                                 
-				<input type="submit" value="Upgrade">
+				<input type="submit" value="&#94;">
                                 <?php }?>
                 </form>
 
     </br>
-    
+    </div>
     <?php
 		
         
