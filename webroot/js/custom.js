@@ -8,7 +8,7 @@ choicediv = document.getElementById('choiceDiv'),
 logindiv = document.getElementById('loginDiv'),
 signindiv = document.getElementById('signInDiv'),
 backbutton = document.getElementById('backButton');
-}
+
 
 if (arg1=="login") {
 	choicediv.style.display = "none";
@@ -27,7 +27,7 @@ if (arg1=="back") {
 	logindiv.style.display = "none";
 	backbutton.style.display = "none";
 }
-
+}
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
   var getEmail = profile.getEmail();
