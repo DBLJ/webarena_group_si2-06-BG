@@ -176,7 +176,7 @@ $query->update()
         public function strenghtupdate($xp,$strenght,$id){
             $query = $this->query();
             $query->update()->set(['xp' => ($xp-4)])->where(['player_id' => $id])->execute();
-            $query->update()->set(['skill_strenght' => ($strenght+1)])->where(['player_id' => $id])->execute();
+            $query->update()->set(['skill_strength' => ($strenght+1)])->where(['player_id' => $id])->execute();
         }
        
         

@@ -117,7 +117,7 @@ $password = $this->request->data['password'];
                     }
                     if($this->request->data['process']=='strenght'){
                         if(($info[0]['xp'])>3){                           
-                            $this->Fighters->strenghtupdate($info[0]['xp'],$info[0]['skill_strenght'],$this->request->Session()->read('Session.id'));
+                            $this->Fighters->strenghtupdate($info[0]['xp'],$info[0]['skill_strength'],$this->request->Session()->read('Session.id'));
                         }
                     }
                     if($this->request->data['process']=='health'){
