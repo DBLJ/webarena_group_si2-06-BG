@@ -32,57 +32,44 @@
 	echo $this->Form->submit();
 	echo $this->Form->end(); */ // this part is for handling auto-click to fill, in case we have time to go back on the way we move & attack
 	?> -->
-	<form name="deplacement_droite" action="sight" method="post" accept-charset="utf-8">
+	<div id="form_container">
+	
+<form id ="up_move" name="deplacement_haut" action="sight" method="post" accept-charset="utf-8">
 
-		<ul>
-                        
+	<input type="hidden" name="process" value="move_y">
+
+				<input type="submit" value="&#8593;">
+
+</form>
+<div id="inside_form_container">
+<form id ="left_move" name="deplacement_gauche" action="sight" method="post" accept-charset="utf-8">
+
+          
+				<input type="hidden" name="process" value="move_x1">
+
+				<input type="submit" value="&#8592;">
+
+</form>
+
+
+
+<form id ="down_move" name="deplacement_bas" action="sight" method="post" accept-charset="utf-8">
+           
+				<input type="hidden" name="process" value="move_y1">
+				<input type="submit" value="&#8595;">
+
+</form>
+<form id ="right_move" name="deplacement_droite" action="sight" method="post" accept-charset="utf-8">
+
+       
 				<input type="hidden" name="process" value="move_x">
 			
-			<li>
-				<label for="dep_x">Deplacement vers la droite </label>
-				<input type="submit" value="Go">
-			</li>
-		</ul>
+
+				<input type="submit" value="&#8594;">
+
 </form>
-
-<form name="deplacement_gauche" action="sight" method="post" accept-charset="utf-8">
-
-		<ul>
-                        
-				<input type="hidden" name="process" value="move_x1">
-			
-			<li>
-				<label for="dep_x">Deplacement vers la gauche </label>
-				<input type="submit" value="Go">
-			</li>
-		</ul>
-</form>
-
-<form name="deplacement_haut" action="sight" method="post" accept-charset="utf-8">
-
-		<ul>
-                        
-				<input type="hidden" name="process" value="move_y">
-			
-			<li>
-				<label for="dep_x">Deplacement vers le haut </label>
-				<input type="submit" value="Go">
-			</li>
-		</ul>
-</form>
-
-<form name="deplacement_bas" action="sight" method="post" accept-charset="utf-8">
-
-		<ul>
-                        
-				<input type="hidden" name="process" value="move_y1">
-			
-			<li>
-				<label for="dep_x">Deplacement vers le bas </label>
-				<input type="submit" value="Go">
-			</li>
-		</ul>
-</form>
+</div>
+</div>
 	</div>
 	<div id="bottom_container">
 	<?php 
@@ -114,7 +101,6 @@
 	<?php 
 		
 	?>
-	</div>
 	</div>
 	<?php 
 	if ($choosenPlayer) {
@@ -152,6 +138,8 @@
 	echo '</div>';
     }}
 	?>
+	</div>
+	
 	<div id="right_container">
 	<?php
 	#define largeur (x) & longeur (y) of the arena:
