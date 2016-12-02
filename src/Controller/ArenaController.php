@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\I18n\Time;
 
 /**
  * Personal Controller
@@ -46,7 +47,9 @@ class ArenaController extends AppController {
                 $password = $this->request->data['password'];
 
                 $test = $this->Fighters->connexion($mail, $password);
-                if ($test == 0) {
+
+                if (!$test['id']) {
+
                     $this->redirect("/Arena/login");
                 } else {
                     $i = $test['id'];
@@ -108,26 +111,31 @@ $password = $this->request->data['password'];
                         if(($info[0]['xp'])>3){
                             
                             $this->Fighters->levelupdate($info[0]['xp'],$info[0]['level'],$this->request->Session()->read('Session.id'));
+                            $this->redirect("/Arena/fighter");
                         }
                     }
                     if($this->request->data['process'] == 'sight'){
                         if(($info[0]['xp'])>3){                           
                             $this->Fighters->sightupdate($info[0]['xp'],$info[0]['skill_sight'],$this->request->Session()->read('Session.id'));
+                            $this->redirect("/Arena/fighter");
                         }
                     }
                     if($this->request->data['process']=='strenght'){
                         if(($info[0]['xp'])>3){                           
-                            $this->Fighters->strenghtupdate($info[0]['xp'],$info[0]['skill_strenght'],$this->request->Session()->read('Session.id'));
+                            $this->Fighters->strenghtupdate($info[0]['xp'],$info[0]['skill_strength'],$this->request->Session()->read('Session.id'));
+                            $this->redirect("/Arena/fighter");
                         }
                     }
                     if($this->request->data['process']=='health'){
                         if(($info[0]['xp'])>3){                           
                             $this->Fighters->healthupdate($info[0]['xp'],$info[0]['skill_health'],$this->request->Session()->read('Session.id'));
+                            $this->redirect("/Arena/fighter");
                         }
                     }
                     if($this->request->data['process']=='currenthealth'){
                         if(($info[0]['xp'])>3){                           
                             $this->Fighters->currenthealthupdate($info[0]['xp'],$info[0]['current_health'],$this->request->Session()->read('Session.id'));
+                            $this->redirect("/Arena/fighter");
                         }
                     }
                     }
@@ -167,8 +175,25 @@ $password = $this->request->data['password'];
     }
 
     public function sight() {
+	$infoMessage=$this->request->session()->read('choosenPlayer');
+	if($infoMessage)
+	{
+		$player_id_from = $this->request->session()->read('Session.id');
+		$player_id_to = $this->request->session()->read('choosenPlayer'); 
+		$this->loadModel('Fighters');
+		$fighter_from = $this->Fighters->infoRecover($player_id_from);
+		$fighter_to = $this->Fighters->infoRecover($player_id_to);
+		$id_from = $fighter_from[0]['id'];
+		$id_to = $fighter_to[0]['id'];
+		//if ($this->Fighters->getMessages($id_from, $id_to)){
+		$messages = $this->Fighters->getMessages($id_from, $id_to);
+		$this->set('messages', $messages);	
+		//}
+		
+    	}else{
+			$this->set('messages', 'undef');			
+		}
 
-    	
     	if ($this->request->session()->check('Session.id')) {
     		$this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
@@ -242,6 +267,7 @@ $password = $this->request->data['password'];
     	if ($info[0]['xp']-$test>= 4) { // check if level up 
     	  				echo " level up ! augmentez vos caracteristiques dans l'onglet combattants";
     	  				$this->Fighters->addLevel($info[0]['player_id'],$info[0]['level']);
+    	  				$this->Fighters->lifeRecover($info[0]['player_id'],$info[0]['skill_health']);
     	  				$this->request->session()->write('xp_actuel',$info[0]['xp']);
     	  			} 
     	}
@@ -349,6 +375,25 @@ $password = $this->request->data['password'];
             	$this->set('choosenPlayer',$playerName[0]['id']);
             	$this->redirect("/Arena/sight"); // counter bug when user have to double clic to see the map appear
             }
+	
+	    if($this->request->data['process'] == "send"){
+		$infoMessage=$this->request->session()->read('choosenPlayer');
+		if($infoMessage){
+		$this->loadModel('Fighters');
+		$message = $this->request->data['message'];
+		$title = $this->request->data['title'];
+		//$fighter_id_from = $this->request->session()->read('Session.id');
+		//$fighter_id = $this->request->session()->read('choosenPlayer');
+		$fighter_id_from = $id_from;
+		$fighter_id = $id_to;
+		$time = Time::now();
+		if(($fighter_id)){
+			$this->Fighters->setMessage($time, $title, $message, $fighter_id_from, $fighter_id);
+			$this->redirect("/Arena/sight");
+		}
+		}
+	    }
+	
             /*} else {
             $this->redirect("/Arena/fighter");
         	}*/

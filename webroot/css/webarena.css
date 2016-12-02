@@ -95,7 +95,25 @@ a:hover, a:focus, a:active {
     flex: 2;
 background-color: red;
 height: 300px;
-overflow: scroll;
+overflow: auto;
+}
+#chat_container{
+height: 220px;
+width: 150px;
+left: 0;
+top: 200px;
+background-color: rgba(50,160,50,0.6);
+}
+#discussion{
+height: 100px;
+width: 120px;
+margin-bottom: 5px;
+margin-top: 10px;
+margin-left: auto;
+margin-right: auto;
+border-radius: 10px;
+background-color: rgb(255,255,255);
+overflow: auto;
 }
 .gameblock{
     width:100%;
