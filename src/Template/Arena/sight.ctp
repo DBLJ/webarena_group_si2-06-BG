@@ -128,7 +128,12 @@
 			$length = count($messages);
 		for($i=$length-1; $i>=0; $i--)
 		{
-			echo '<p>'.$messages[$i]['message'].'</p>';
+			if ($messages[$i]['title'] == "shouted") {
+				echo '<p><b>'.$messages[$i]['message'].'</b></p>';
+			}else{
+				echo '<p>'.$messages[$i]['message'].'</p>';
+			}
+			
 		}
 		}
 		
@@ -139,7 +144,7 @@
 			
 			echo '<input type="hidden" name="process" value="send">';
 			echo '<input type="hidden" name="title" size="20" placeholder="Titre">';
-			echo '<textarea name="message" rows=2 cols=30 placeholder="Entrez votre message ici"></textarea>';
+			echo '<textarea name="message" style="width: 100%" placeholder="Entrez votre message ici"></textarea>';
 			echo '<input name="send"type="submit" value="envoyer">';
 			echo '<input name="send" type="submit" value="crier">';
 			echo '</form>';
