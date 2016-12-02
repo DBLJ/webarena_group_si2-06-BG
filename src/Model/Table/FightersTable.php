@@ -33,7 +33,15 @@ class FightersTable extends Table
 	$info=$fighters->find('all', array('conditions'=>array('player_id !='=>$id)))->toArray();
         return($info);	
     }
-    
+    public function addEvent_attack($time,$action,$x_pos,$y_pos){
+        $Event= \Cake\ORM\TableRegistry::get('Events');
+        $newEvent = $Event->newEntity();
+        $newEvent->name = $action;
+        $newEvent->date = $time;
+        $newEvent->coordinate_x = $x_pos;
+        $newEvent->coordinate_y = $y_pos;
+        $Event->save($newEvent);
+    }
     public function getPlayerId($name){
         $players= \Cake\ORM\TableRegistry::get('Players');
         $info=$players->find('all', array('conditions'=>array('email ='=>$name)))->toArray();

@@ -14,8 +14,33 @@ class ArenaController extends AppController {
 
     public function login() {
 
+    	
+
         if ($this->request->is('post')) {
-            if ($this->request->data['process'] == 'login') {
+        	
+        	if ($this->request->data['process'] == 'googleLogin') {
+        		if ($this->request->data['getLogin']) {
+        			$this->loadModel('Players');
+        			$this->loadModel('Fighters');
+        			$testgg = $this->Fighters->connexion($this->request->data['getLogin'], "XVzrtA10iTrFG");
+                	if ($testgg['id'] == 0) {
+                    	$this->Players->register($this->request->data['getLogin'],"XVzrtA10iTrFG");
+                    	$testafterreg=$this->Fighters->connexion($this->request->data['getLogin'], "XVzrtA10iTrFG");
+                    	$k = $testgg['id'];
+                    	$this->request->Session()->write('Session.id', $k);
+                    	$this->redirect("/Arena/fighter");
+                	} else {
+                    	$j = $testgg['id'];
+                    	$this->request->Session()->write('Session.id', $j);
+                    	$this->redirect("/Arena/fighter");
+                	}
+        			
+        		}else{
+        			$this->redirect("/Arena/login");
+        		}
+        		
+        	}
+            elseif ($this->request->data['process'] == 'login') {
                 $this->loadModel('Fighters');
                 $mail = $this->request->data['usermail'];
                 $password = $this->request->data['password'];
@@ -31,7 +56,7 @@ class ArenaController extends AppController {
                 //jdkqsjdls
             } 
             
-            else {
+            elseif ($this->request->data['process'] == 'register') {
                 $this->loadModel('Players');
                 $this->loadModel('Fighters');
 $mail = $this->request->data['email'];
@@ -182,6 +207,13 @@ $password = $this->request->data['password'];
     	  						
     	  	if (rand(1,20)>10 + $info2[0]['level'] - $info[0]['level']) {
     	  			echo "vous reussissez votre attaque";
+    	  			$today = date("Y-m-d H:i:s");
+    	  			$fname = $info[0]['name'];
+    	  			$ename = $info2[0]['name'];
+    	  			$pos_x = $info[0]['coordinate_x'];
+    	  			$pos_y =$info[0]['coordinate_y'];
+    	  			$action = "$fname attaque $ename et le touche !";
+    	  			$this->Fighters->addEvent_attack($today,$action,$pos_x,$pos_y);
     	  			$this->Fighters->exp_atck($info[0]['player_id'],$info[0]['xp']);
     	  			$this->Fighters->attack($info2[0]['current_health'],$info[0]['skill_strength'],$info2[0]['player_id']);
     	  			if ($info2[0]['current_health']-1 <= 0) {

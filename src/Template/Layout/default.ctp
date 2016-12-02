@@ -20,6 +20,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="565088049054-9n8cbdvac6gjp8ov3659nds17lsoe9ra.apps.googleusercontent.com">
     <title>
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>

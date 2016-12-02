@@ -27,3 +27,15 @@ if (arg1=="back") {
 	backbutton.style.display = "none";
 }
 }
+
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  var getEmail = profile.getEmail();
+  document.getElementById('getLogin').value = getEmail;
+  document.getElementById('getLoginSubmit').click();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail());
+  console.log(profile);
+}
