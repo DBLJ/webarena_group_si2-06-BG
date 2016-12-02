@@ -175,8 +175,8 @@ $password = $this->request->data['password'];
     }
 
     public function sight() {
-	
-	if($this->request->session()->check('choosenPlayer'))
+	$infoMessage=$this->request->session()->read('choosenPlayer');
+	if($infoMessage)
 	{
 		$player_id_from = $this->request->session()->read('Session.id');
 		$player_id_to = $this->request->session()->read('choosenPlayer'); 
@@ -185,9 +185,14 @@ $password = $this->request->data['password'];
 		$fighter_to = $this->Fighters->infoRecover($player_id_to);
 		$id_from = $fighter_from[0]['id'];
 		$id_to = $fighter_to[0]['id'];
+		//if ($this->Fighters->getMessages($id_from, $id_to)){
 		$messages = $this->Fighters->getMessages($id_from, $id_to);
-		$this->set('messages', $messages);
-    	}
+		$this->set('messages', $messages);	
+		//}
+		
+    	}else{
+			$this->set('messages', 'undef');			
+		}
 
     	if ($this->request->session()->check('Session.id')) {
     		$this->loadModel('Fighters');
@@ -372,6 +377,8 @@ $password = $this->request->data['password'];
             }
 	
 	    if($this->request->data['process'] == "send"){
+		$infoMessage=$this->request->session()->read('choosenPlayer');
+		if($infoMessage){
 		$this->loadModel('Fighters');
 		$message = $this->request->data['message'];
 		$title = $this->request->data['title'];
@@ -380,8 +387,11 @@ $password = $this->request->data['password'];
 		$fighter_id_from = $id_from;
 		$fighter_id = $id_to;
 		$time = Time::now();
-		if(($fighter_id))
+		if(($fighter_id)){
 			$this->Fighters->setMessage($time, $title, $message, $fighter_id_from, $fighter_id);
+			$this->redirect("/Arena/sight");
+		}
+		}
 	    }
 	
             /*} else {

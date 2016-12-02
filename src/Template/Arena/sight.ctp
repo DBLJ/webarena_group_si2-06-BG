@@ -120,12 +120,15 @@
 	<div id="chat_container">
 		<div id="discussion">
 		<?php
-		if($messages){
-		$length = count($messages);
+		if($messages == 'undef'){
+		echo '<p> choisir un joueur</p>';
+		}else{
+			$length = count($messages);
 		for($i=$length-1; $i>=0; $i--)
 		{
 			echo '<p>'.$messages[$i]['message'].'</p>';
-		}}
+		}
+		}
 		?>
 		</div>
 
