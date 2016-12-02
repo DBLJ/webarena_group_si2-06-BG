@@ -154,7 +154,33 @@ $query->update()
 	}
         
         public function levelupdate($xp,$level,$id){
-            $this->update()->set(['xp' => ($xp-4)])->where(['player_id' => $id])->execute();
-            $this->update()->set(['level' => ($level+1)])->where(['player_id' => $id])->execute();
+            $query = $this->query();
+            $query->update()->set(['xp' => ($xp-4)])->where(['player_id' => $id])->execute();
+            $query->update()->set(['level' => ($level+1)])->where(['player_id' => $id])->execute();
+        }
+        
+        public function sightupdate($xp,$sight,$id){
+            $query = $this->query();
+            $query->update()->set(['xp' => ($xp-4)])->where(['player_id' => $id])->execute();
+            $query->update()->set(['skill_sight' => ($sight+1)])->where(['player_id' => $id])->execute();
+        }
+        
+        public function strenghtupdate($xp,$strenght,$id){
+            $query = $this->query();
+            $query->update()->set(['xp' => ($xp-4)])->where(['player_id' => $id])->execute();
+            $query->update()->set(['skill_strenght' => ($strenght+1)])->where(['player_id' => $id])->execute();
+        }
+       
+        
+        public function healthupdate($xp,$health,$id){
+            $query = $this->query();
+            $query->update()->set(['xp' => ($xp-4)])->where(['player_id' => $id])->execute();
+            $query->update()->set(['skill_health' => ($health+1)])->where(['player_id' => $id])->execute();
+        }
+        
+        public function currenthealthupdate($xp,$currenthealth,$id){
+            $query = $this->query();
+            $query->update()->set(['xp' => ($xp-4)])->where(['player_id' => $id])->execute();
+            $query->update()->set(['current_health' => ($currenthealth+1)])->where(['player_id' => $id])->execute();
         }
 }
