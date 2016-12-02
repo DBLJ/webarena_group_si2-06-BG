@@ -213,3 +213,48 @@ margin: auto;
     width : 20%;
     margin-top: 5%;
 }
+
+#guild_create{
+   height: 170px;
+   width: 300px;
+   padding-top: 20px;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 2%;
+   background-color: rgba(50,160,50,0.6);
+   border-radius: 20px;
+}
+
+#guild_join{
+   height: 200px;
+   width: 300px;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 30px;
+   background-color: rgba(50,160,50,0.6);
+   border-radius: 20px;
+   overflow: auto;
+   
+}
+
+.guild
+{
+   height:60px;
+   width: 150px;
+   margin-left: 30px;
+}
+
+#guildCreate
+{
+   width: 270px;
+   margin-left: 30px;
+}
+
+.form_title
+{
+   font-size: 20px;
+   color: rgb(30,70,150);
+   width: 120px;
+   margin-left: auto;
+   margin-right: auto;
+}
