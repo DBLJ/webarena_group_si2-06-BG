@@ -47,7 +47,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
              <?php echo $this->Html->link('combattant', array('controller' => 'Arena', 'action' => 'fighter')); ?>            
             </li>
             <li>
-             <?php echo $this->Html->link('en attente', array('controller' => 'Arena', 'action' => 'sight')); ?>            
+             <?php echo $this->Html->link('Guilds', array('controller' => 'Arena', 'action' => 'guild')); ?>            
             </li>
             <li>
              <?php echo $this->Html->link('en attente', array('controller' => 'Arena', 'action' => 'sight')); ?>

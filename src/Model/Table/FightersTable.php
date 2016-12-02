@@ -88,6 +88,14 @@ class FightersTable extends Table
 	$messages->save($newMessage);
     }
 
+    public function setGuildId($id, $fighterId){
+	$query = $this->query();
+	$query->update()
+		->set(['guild_id'=>$id])
+		->where(['id'=>$fighterId])
+		->execute();
+    }
+
     public function moveFighter($coordonnee,$identifiant_move, $sessionId){
 	
         if($identifiant_move == 1){
