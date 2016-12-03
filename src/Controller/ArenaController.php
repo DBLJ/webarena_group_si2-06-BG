@@ -181,6 +181,7 @@ $password = $this->request->data['password'];
 			{
 				$position_x = mt_rand(0,14);
 				$position_y = mt_rand(0,9);
+                                
 				for($i=0;$i < $length ; $i++)
 				{
 					if(($position_x == $info[$i]['coordinate_x']) && ($position_y == $info[$i]['coordinate_y']))

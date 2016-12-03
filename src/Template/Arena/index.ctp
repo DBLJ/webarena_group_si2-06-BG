@@ -1,6 +1,6 @@
 <div id="imagedefond">
 <?php 
-echo '<img src="../webroot/img/fond.jpeg" alt="avatar" width="100%" height="auto">';
+echo '<img src="../webroot/img/fond.png" alt="avatar" width="100%" height="auto">';
 
 ?>
 </div>
