@@ -180,8 +180,7 @@ $password = $this->request->data['password'];
 			while(($i < $length) | ($checkPosition == 0))
 			{
 				$position_x = mt_rand(0,14);
-				$position_y = mt_rand(0,9);
-                                
+				$position_y = mt_rand(0,9);                                
 				for($i=0;$i < $length ; $i++)
 				{
 					if(($position_x == $info[$i]['coordinate_x']) && ($position_y == $info[$i]['coordinate_y']))
@@ -190,7 +189,7 @@ $password = $this->request->data['password'];
 						break;
 					}
 				}
-			}
+			}                        
 			$name = $this->request->data['fighterName'];
 			$playerId = $this->request->Session()->read('Session.id');
 			$this->Fighters->createNewFighter($name, $playerId, $position_x, $position_y);
