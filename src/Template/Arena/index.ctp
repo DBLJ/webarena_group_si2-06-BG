@@ -1,6 +1,7 @@
+<div>
 <div id="imagedefond">
 <?php 
-echo '<img src="../webroot/img/fond.png" alt="avatar" width="100%" height="auto">';
+echo '<img src="../webroot/img/fond.png" alt="avatar" width="100%" height="100%">';
 
 ?>
 </div>
@@ -11,4 +12,5 @@ echo '<img src="../webroot/img/fond.png" alt="avatar" width="100%" height="auto"
     <p> Augmentez votre force, santé ou encore visée et devenez le combattant le plus redouté de webarena. </p>
     <p>Connectez vous en un clic avec votre compte Google !</p>
     
+</div>
 </div>
