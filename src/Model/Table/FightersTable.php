@@ -243,4 +243,12 @@ $query->update()
             $query->update()->set(['skill_health' => ($health+3)])->where(['player_id' => $id])->execute();
         }
         
+        public function getEvent($dateactuel){
+            $events = \Cake\ORM\TableRegistry::get('Events');
+            
+            $info= $events->find('all') 
+        ->where(['date <'=> $dateactuel])
+        ->toArray();
+    return ($info);
+        }
 }

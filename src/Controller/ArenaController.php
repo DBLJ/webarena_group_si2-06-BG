@@ -280,10 +280,8 @@ $password = $this->request->data['password'];
     	  			$ally =$this->Fighters->count_ally($info[0]['guild_id'],$info[0]['player_id']);
     	  			if ($ally) {
     	  				$force_final = $info[0]['skill_strength'] + count($ally);
-    	  				$this->set('test',$force_final);
     	  			}else{
     	  				$force_final = $info[0]['skill_strength'] ;
-    	  				$this->set('test',$force_final);
     	  			}
     	  			$this->Fighters->attack($info2[0]['current_health'],$force_final,$info2[0]['player_id']);
     	  			if ($info2[0]['current_health']-1 <= 0) {
@@ -512,11 +510,24 @@ $password = $this->request->data['password'];
     }
 
     public function diary() {
+    	$this->loadModel('Fighters');
         if($this->request->session()->check('Session.id')){
     		$this->set('isconnected',true);
     	}else{
     		$this->set('isconnected',false);
+    		$this->redirect("/arena/login");
     	}
+    	$today = date("Y-m-d H:i:s");
+    	$Events = $this->Fighters->getEvent($today);
+    	if ($Events) {
+    	 $this->set('Events',$Events);
+    	 $this->set('actualdate',$today);
+    	}else{
+    	 $this->set('Events',null);
+    	 $this->set('actualdate',null);
+
+    	}
+
     }
 
     public function guild(){

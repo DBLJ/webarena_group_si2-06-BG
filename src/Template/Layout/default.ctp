@@ -52,6 +52,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <li>
              <?php echo $this->Html->link('Connexion', array('controller' => 'Arena', 'action' => 'login')); ?>
             </li>
+            <li>
+             <?php echo $this->Html->link('Journal', array('controller' => 'Arena', 'action' => 'diary')); ?>
+            </li>
         </ul>
     </nav>
     <nav class="logout">

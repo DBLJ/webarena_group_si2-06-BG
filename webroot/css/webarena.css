@@ -74,7 +74,15 @@ a:hover, a:focus, a:active {
   font-size: 1.2em;
 }
 
-
+#insideEvents{
+        flex-direction: column;
+    overflow: scroll;
+    height: 100%;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+}
 /* sight part */
 #container{
     display: flex;
