@@ -105,7 +105,14 @@ class FightersTable extends Table
 	$newMessage->fighter_id = $fighter_id;
 	$messages->save($newMessage);
     }
-
+    public function count_ally($id,$pid){
+         $fighters= \Cake\ORM\TableRegistry::get('Fighters');
+        $info= $fighters->find('all')
+        ->select(['player_id','guild_id'])
+        ->where(['guild_id ='=>$id, 'player_id !='=>$pid])
+        ->toArray();
+    return ($info);
+    }
     public function setGuildId($id, $fighterId){
 	$query = $this->query();
 	$query->update()
