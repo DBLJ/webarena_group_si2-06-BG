@@ -485,6 +485,9 @@ $password = $this->request->data['password'];
 				$this->set('test', $fighterId);
 	if ($this->request->session()->check('Session.id')) 
 	{
+		if (!$fighterId) {
+			$this->redirect("/Arena/fighter");
+		}
 		$this->loadModel('Guilds');
 		$this->loadModel('Fighters');
 		if($this->request->is('post'))
