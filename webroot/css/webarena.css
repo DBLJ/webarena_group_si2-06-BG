@@ -210,28 +210,23 @@ justify-content: center;
 }
 #div1{
 
-    position: absolute;
     background-color: pink;
-    border: 3px blue dashed;
-    border-radius: 10px;
-    margin-left: 10%;
-    margin-top: 15%;
-    margin-top: 0px;
-    width : 20%;
-    margin-top: 5%;
-    z-index: 1;
+border: 3px blue dashed;
+border-radius: 10px;
+width: 20%;
+margin-top: 5%;
+z-index: 1;
+margin :auto;
 }
 
 #div2{
-    position : relative;
     background-color: pink;
-    border: 3px blue dashed;
-    border-radius: 10px;
-    margin-left: 10%;
-    margin-top: 15%;
-    margin-top: 0px;
-    width : 20%;
-    margin-top: 5%;
+border: 3px blue dashed;
+border-radius: 10px;
+width: 20%;
+margin-top: 5%;
+z-index: 1;
+margin :auto;
 }
 
 #guild_create{
