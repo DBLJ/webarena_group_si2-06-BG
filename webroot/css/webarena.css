@@ -13,6 +13,7 @@ header{
     top: 75px;
     bottom: 75px;
     width:100%;
+    display: flex;
 }
 .top-bar{
     background-color:black;
@@ -26,10 +27,16 @@ header{
     justify-content: space-around;
     margin-top: 23px;;
 }
-.login{
+.logout{
     width: 75px;
     height: auto;
     background-color: lightgreen;
+}
+
+.logout a{
+height: auto;
+width: 75px;
+
 }
 .login_menu{
     background-color: blue;
@@ -73,6 +80,7 @@ a:hover, a:focus, a:active {
     display: flex;
     justify-content: space-around;
     height: 100%;
+    width: 100%;
 }
 #left_container{
     flex: 1;
@@ -89,7 +97,7 @@ a:hover, a:focus, a:active {
     align-items: center;
 }
 #top_container{
-    flex:2;
+margin-bottom: 10px;
 }
 #bottom_container{
     flex: 2;
@@ -98,11 +106,10 @@ height: 300px;
 overflow: auto;
 }
 #chat_container{
-height: 220px;
-width: 150px;
-left: 0;
-top: 200px;
 background-color: rgba(50,160,50,0.6);
+display: flex;
+flex-direction: column;
+flex: 1;
 }
 #discussion{
 height: 100px;
@@ -130,7 +137,19 @@ overflow: auto;
     height: 100%;
 justify-content: space-around;
 }
+/* sight part */
+#form_container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+#inside_form_container{
+    display:flex;
+    align-self: center;
+}
+#left_move{
 
+}
 /* login aprt */
 #loginDiv,#signInDiv,#choiceDiv{
 height: 100%;
@@ -159,12 +178,30 @@ justify-content: center;
     z-index: 100;
 }
 .show{
-    display:block;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+}
+#first{
+    display: flex;
+justify-content: center;
+}
+#scnd{
+    display: flex;
+justify-content: center;
+}
+#third{
+    display: flex;
+justify-content: center;
+}
+.marginL{
+    margin-left: 5px;
 }
 .hidden{
     display:none;
 }
 #div1{
+<<<<<<< HEAD
     position: absolute;
     background-color: pink;
     border: 3px blue dashed;
@@ -176,6 +213,14 @@ justify-content: center;
     margin-top: 5%;
     z-index: 1;
     
+=======
+    background-color: lightyellow;
+border: 3px blue dashed;
+border-radius: 10px;
+width: 20%;
+z-index: 1;
+margin: auto;
+>>>>>>> ecba63400620c4d19638c298a0dcf4881edb048d
 }
 
 #div2{
@@ -188,4 +233,58 @@ justify-content: center;
     margin-top: 0px;
     width : 20%;
     margin-top: 5%;
+}
+
+#guild_create{
+   height: 170px;
+   width: 300px;
+   padding-top: 20px;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 2%;
+   background-color: rgba(50,160,50,0.6);
+   border-radius: 20px;
+}
+
+#guild_join{
+   height: 200px;
+   width: 300px;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 30px;
+   background-color: rgba(50,160,50,0.6);
+   border-radius: 20px;
+   overflow: auto;
+   
+}
+
+.guild
+{
+   height:60px;
+   width: 150px;
+   margin-left: 30px;
+}
+
+#guildCreate
+{
+   width: 270px;
+   margin-left: 30px;
+}
+
+.form_title
+{
+   font-size: 20px;
+   color: rgb(30,70,150);
+   width: 120px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.img_logout
+{
+  width: 60px;
+  height: 64px;
+  margin-left: 7px;
+  margin-top: 5px;
+
 }

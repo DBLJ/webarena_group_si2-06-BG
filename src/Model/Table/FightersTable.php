@@ -87,7 +87,7 @@ class FightersTable extends Table
 	$messages= \Cake\ORM\TableRegistry::get('Messages');
 	/*$info= $messages->find('all', array('conditions'=>array('fighter_id_from ='=>$fighterId_source, 'fighter_id ='=>$fighterId_destination)))->toArray();*/
 	$info= $messages->find('all')
-		->select(['message'])
+		->select(['title','message'])
 		->where(['fighter_id_from ='=>$fighterId_source, 'fighter_id'=>$fighterId_destination])
 		->orWhere(['fighter_id_from ='=>$fighterId_destination, 'fighter_id'=>$fighterId_source])
 		->toArray();
@@ -104,6 +104,14 @@ class FightersTable extends Table
 	$newMessage->fighter_id_from = $fighter_id_from;
 	$newMessage->fighter_id = $fighter_id;
 	$messages->save($newMessage);
+    }
+
+    public function setGuildId($id, $fighterId){
+	$query = $this->query();
+	$query->update()
+		->set(['guild_id'=>$id])
+		->where(['id'=>$fighterId])
+		->execute();
     }
 
     public function moveFighter($coordonnee,$identifiant_move, $sessionId){

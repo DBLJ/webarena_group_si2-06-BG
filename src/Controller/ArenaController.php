@@ -15,7 +15,11 @@ class ArenaController extends AppController {
 
     public function login() {
 
-    	
+    	if($this->request->session()->check('Session.id')){
+    		$this->set('isconnected',true);
+    	}else{
+    		$this->set('isconnected',false);
+    	}
 
         if ($this->request->is('post')) {
         	
@@ -81,9 +85,29 @@ $password = $this->request->data['password'];
         }
     }
 
+    public function logout(){
+    if($this->request->session()->check('Session.id')){
+    		$this->set('isconnected',true);
+    	}else{
+    		$this->set('isconnected',false);
+    	}
+	if($this->request->session()->check('Session.id'))
+	{
+		$this->request->session()->destroy();
+		$this->redirect("/Arena/login");
+	}
+	else
+		$this->redirect("/Arena/login");
+    }
+
     public function fighter() {
 	$checkPosition = 1;
 	$i = 0;
+	if($this->request->session()->check('Session.id')){
+    		$this->set('isconnected',true);
+    	}else{
+    		$this->set('isconnected',false);
+    	}
         if ($this->request->session()->check('Session.id')) {
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
@@ -178,6 +202,11 @@ $password = $this->request->data['password'];
     }
 
     public function sight() {
+    	if($this->request->session()->check('Session.id')){
+    		$this->set('isconnected',true);
+    	}else{
+    		$this->set('isconnected',false);
+    	}
 	$infoMessage=$this->request->session()->read('choosenPlayer');
 	if($infoMessage)
 	{
@@ -417,6 +446,9 @@ $password = $this->request->data['password'];
             }
 	
 	    if($this->request->data['process'] == "send"){
+	    	if ($this->request->data['send'] == "envoyer") {
+	    		# code...
+	    	
 		$infoMessage=$this->request->session()->read('choosenPlayer');
 		if($infoMessage){
 		$this->loadModel('Fighters');
@@ -432,7 +464,31 @@ $password = $this->request->data['password'];
 			$this->redirect("/Arena/sight");
 		}
 		}
+	    }elseif ($this->request->data['send'] == "crier") {
+	    	$infoMessage=$this->request->session()->read('choosenPlayer');
+		if($infoMessage){
+		$this->loadModel('Fighters');
+		$message = $this->request->data['message'];
+		$title = "shouted";
+		//$fighter_id_from = $this->request->session()->read('Session.id');
+		//$fighter_id = $this->request->session()->read('choosenPlayer');
+		$fighter_id_from = $id_from;
+		$fighter_id = $id_to;
+		$time = Time::now();
+		if(($fighter_id)){
+			$this->Fighters->setMessage($time, $title, $message, $fighter_id_from, $fighter_id);
+			$today = date("Y-m-d H:i:s");
+    	  			$fname = $info[0]['name'];
+    	  			$ename = $info2[0]['name'];
+    	  			$pos_x = $info[0]['coordinate_x'];
+    	  			$pos_y =$info[0]['coordinate_y'];
+    	  			$action = "$fname crie à $ename: $message";
+    	  			$this->Fighters->addEvent_attackFail($today,$action,$pos_x,$pos_y);
+			$this->redirect("/Arena/sight");
+		}
+		}
 	    }
+	}
 	
             /*} else {
             $this->redirect("/Arena/fighter");
@@ -448,11 +504,77 @@ $password = $this->request->data['password'];
     }
 
     public function diary() {
-        
+        if($this->request->session()->check('Session.id')){
+    		$this->set('isconnected',true);
+    	}else{
+    		$this->set('isconnected',false);
+    	}
+    }
+
+    public function guild(){
+    	if($this->request->session()->check('Session.id')){
+    		$this->set('isconnected',true);
+    	}else{
+    		$this->set('isconnected',false);
+    	}
+    $this->loadModel('Fighters');
+				$playerId = $this->request->session()->read('Session.id');
+				$fighterId = $this->Fighters->infoRecover($playerId);
+				$this->set('test', $fighterId);
+	if ($this->request->session()->check('Session.id')) 
+	{
+		if (!$fighterId) {
+			$this->redirect("/Arena/fighter");
+		}
+		$this->loadModel('Guilds');
+		$this->loadModel('Fighters');
+		if($this->request->is('post'))
+		{
+			if ($this->request->data['process'] == 'createGuild')
+			{
+			$guildName = $this->request->data['guildName'];
+			if($guildName)
+			{
+				if(!($this->Guilds->existsGuildSameName($guildName)))
+				{
+					$guildId2=$this->Guilds->setGuild($guildName);
+					$this->Fighters->setGuildId($guildId2,$fighterId[0]['id']);
+					$this->redirect("/Arena/guild");
+				}
+			}
+			}
+
+			else //if ($this->request->data['process'] == 'joinGuild')
+			{
+				$this->loadModel('Fighters');
+				$guildId = $this->request->data['process'];
+				$playerId = $this->request->session()->read('Session.id');
+				$fighterId = $this->Fighters->infoRecover($playerId);
+				$this->Fighters->setGuildId($guildId, $fighterId[0]['id']);
+				$this->redirect("/Arena/guild");
+				
+			}
+		}
+		
+		$guilds = $this->Guilds->getGuilds();
+		if($guilds)
+		{
+			$this->set('guilds', $guilds);
+		}
+		else
+		{$this->set('guilds', 'undef');}
+	}
+	else
+		$this->redirect("/Arena/login");
+	    
     }
 
     public function index() {
-        
+        if($this->request->session()->check('Session.id')){
+    		$this->set('isconnected',true);
+    	}else{
+    		$this->set('isconnected',false);
+    	}
     }
 
 
