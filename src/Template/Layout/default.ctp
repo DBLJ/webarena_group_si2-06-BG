@@ -44,13 +44,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
              <?php echo $this->Html->link('Vision', array('controller' => 'Arena', 'action' => 'sight')); ?>            
             </li>
             <li>
-             <?php echo $this->Html->link('combattant', array('controller' => 'Arena', 'action' => 'fighter')); ?>            
+             <?php echo $this->Html->link('Combattant', array('controller' => 'Arena', 'action' => 'fighter')); ?>            
             </li>
             <li>
-             <?php echo $this->Html->link('Guilds', array('controller' => 'Arena', 'action' => 'guild')); ?>            
+             <?php echo $this->Html->link('Guildes', array('controller' => 'Arena', 'action' => 'guild')); ?>            
             </li>
             <li>
-             <?php echo $this->Html->link('login', array('controller' => 'Arena', 'action' => 'login')); ?>
+             <?php echo $this->Html->link('Connexion', array('controller' => 'Arena', 'action' => 'login')); ?>
             </li>
         </ul>
     </nav>

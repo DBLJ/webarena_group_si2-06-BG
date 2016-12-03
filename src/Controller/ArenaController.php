@@ -277,7 +277,15 @@ $password = $this->request->data['password'];
     	  			$action = "$fname attaque $ename et le touche !";
     	  			$this->Fighters->addEvent_attack($today,$action,$pos_x,$pos_y);
     	  			$this->Fighters->exp_atck($info[0]['player_id'],$info[0]['xp']);
-    	  			$this->Fighters->attack($info2[0]['current_health'],$info[0]['skill_strength'],$info2[0]['player_id']);
+    	  			$ally =$this->Fighters->count_ally($info[0]['guild_id'],$info[0]['player_id']);
+    	  			if ($ally) {
+    	  				$force_final = $info[0]['skill_strength'] + count($ally);
+    	  				$this->set('test',$force_final);
+    	  			}else{
+    	  				$force_final = $info[0]['skill_strength'] ;
+    	  				$this->set('test',$force_final);
+    	  			}
+    	  			$this->Fighters->attack($info2[0]['current_health'],$force_final,$info2[0]['player_id']);
     	  			if ($info2[0]['current_health']-1 <= 0) {
     	  				$this->Fighters->exp_atck_dead($info[0]['player_id'],$info[0]['xp'],$info2[0]['level']);
     	  				$dead=$this->Fighters->get($info2[0]['id']);
