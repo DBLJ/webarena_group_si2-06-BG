@@ -54,8 +54,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </li>
         </ul>
     </nav>
-    <nav class="login">
+    <nav class="logout">
+	<?php 
 
+	echo $this->Html->image("logout.png", [
+    "class"=> "img_logout",
+    "alt" => "déconnexion",
+    'url' => ['controller' => 'Arena', 'action' => 'logout']
+]); ?>
     </nav>
     <div class="login_menu">
         
