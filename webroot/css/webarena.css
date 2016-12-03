@@ -294,10 +294,13 @@ margin :auto;
     color : white;
     text-align: center;
     font-size: 22px;
+    top:0;
+    background-color: rgba(0,0,0,0.4);
     
 }
 
 #imagedefond{
     z-index: 1;
     position : relative;
+    height: 100%;
 }
