@@ -82,9 +82,9 @@ a:hover, a:focus, a:active {
     text-align: center;
     width: 100%;
 }
-}
+
 /* sight part */
-#container{
+#containerBug {
     display: flex;
     justify-content: space-around;
     height: 100%;
