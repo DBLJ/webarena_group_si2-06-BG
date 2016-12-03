@@ -201,7 +201,7 @@ justify-content: center;
     display:none;
 }
 #div1{
-<<<<<<< HEAD
+
     position: absolute;
     background-color: pink;
     border: 3px blue dashed;
@@ -212,15 +212,6 @@ justify-content: center;
     width : 20%;
     margin-top: 5%;
     z-index: 1;
-    
-=======
-    background-color: lightyellow;
-border: 3px blue dashed;
-border-radius: 10px;
-width: 20%;
-z-index: 1;
-margin: auto;
->>>>>>> ecba63400620c4d19638c298a0dcf4881edb048d
 }
 
 #div2{
@@ -304,6 +295,6 @@ margin: auto;
 }
 
 #imagedefond{
-    z-index: :1;
+    z-index: 1;
     position : relative;
 }

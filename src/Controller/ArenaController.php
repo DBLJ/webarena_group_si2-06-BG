@@ -531,11 +531,12 @@ $password = $this->request->data['password'];
     $this->loadModel('Fighters');
 				$playerId = $this->request->session()->read('Session.id');
 				$fighterId = $this->Fighters->infoRecover($playerId);
+                                if(isset($fighterId[0]['guild_id'])){
                                 $guildinfo = $this->Fighters->guildrecover(($fighterId[0]['guild_id']));
                                 
                                 $this->set('guildinfo',$guildinfo);
-                                        
-				$this->set('test', $fighterId);
+                                }     
+                                $this->set('test', $fighterId);
 	if ($this->request->session()->check('Session.id')) 
 	{
 		if (!$fighterId) {

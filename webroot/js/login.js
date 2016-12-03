@@ -1,4 +1,4 @@
-git function checkPassword(var inputName)
+function checkPassword(var inputName)
 {
 	alert('blablabla');
 	var password;
