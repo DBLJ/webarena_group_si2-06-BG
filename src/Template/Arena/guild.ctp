@@ -21,11 +21,13 @@
 <h1 class="form_title">Join Guild</h1>
 
 <?php
-if ($test[0]) {
+if ($test) {
+	if ($test[0]['guild_id']) {	
 			$i =$test[0]['guild_id']-1;
 			echo '<p style="text-align:center;"> Votre guilde :';
 			echo $guilds[$i]['name'];
 			echo '</p>';
+			}
 		}
 if($guilds != 'undef')
 {
