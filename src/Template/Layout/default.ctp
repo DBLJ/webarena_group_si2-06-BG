@@ -38,7 +38,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <nav class="top-bar">
         <ul class="menu">
             <li class="name">
-                <?php  echo $this->Html->link('Acceuil', array('controller' => 'Arena', 'action' => '/')); ?>
+                <?php  echo $this->Html->link('Acceuil', array('controller' => 'Arena', 'action' => ' ')); ?>
             </li>
             <li>
              <?php if ($isconnected) {echo $this->Html->link('Vision', array('controller' => 'Arena', 'action' => 'sight')); }?>            
