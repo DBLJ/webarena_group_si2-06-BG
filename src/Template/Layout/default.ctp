@@ -50,18 +50,22 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
              <?php echo $this->Html->link('Guilds', array('controller' => 'Arena', 'action' => 'guild')); ?>            
             </li>
             <li>
-             <?php echo $this->Html->link('en attente', array('controller' => 'Arena', 'action' => 'sight')); ?>
+             <?php echo $this->Html->link('login', array('controller' => 'Arena', 'action' => 'login')); ?>
             </li>
         </ul>
     </nav>
     <nav class="logout">
 	<?php 
-
+    if ($isconnected) {
+        # code...
+    
 	echo $this->Html->image("logout.png", [
     "class"=> "img_logout",
     "alt" => "déconnexion",
     'url' => ['controller' => 'Arena', 'action' => 'logout']
-]); ?>
+    ]);
+    }
+    ?>
     </nav>
     <div class="login_menu">
         

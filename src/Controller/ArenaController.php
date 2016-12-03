@@ -15,7 +15,11 @@ class ArenaController extends AppController {
 
     public function login() {
 
-    	
+    	if($this->request->session()->check('Session.id')){
+    		$this->set('isconnected',true);
+    	}else{
+    		$this->set('isconnected',false);
+    	}
 
         if ($this->request->is('post')) {
         	
@@ -82,6 +86,11 @@ $password = $this->request->data['password'];
     }
 
     public function logout(){
+    if($this->request->session()->check('Session.id')){
+    		$this->set('isconnected',true);
+    	}else{
+    		$this->set('isconnected',false);
+    	}
 	if($this->request->session()->check('Session.id'))
 	{
 		$this->request->session()->destroy();
@@ -94,6 +103,11 @@ $password = $this->request->data['password'];
     public function fighter() {
 	$checkPosition = 1;
 	$i = 0;
+	if($this->request->session()->check('Session.id')){
+    		$this->set('isconnected',true);
+    	}else{
+    		$this->set('isconnected',false);
+    	}
         if ($this->request->session()->check('Session.id')) {
             $this->loadModel('Fighters');
             $info = $this->Fighters->infoRecover($this->request->session()->read('Session.id'));
@@ -188,6 +202,11 @@ $password = $this->request->data['password'];
     }
 
     public function sight() {
+    	if($this->request->session()->check('Session.id')){
+    		$this->set('isconnected',true);
+    	}else{
+    		$this->set('isconnected',false);
+    	}
 	$infoMessage=$this->request->session()->read('choosenPlayer');
 	if($infoMessage)
 	{
@@ -485,10 +504,19 @@ $password = $this->request->data['password'];
     }
 
     public function diary() {
-        
+        if($this->request->session()->check('Session.id')){
+    		$this->set('isconnected',true);
+    	}else{
+    		$this->set('isconnected',false);
+    	}
     }
 
     public function guild(){
+    	if($this->request->session()->check('Session.id')){
+    		$this->set('isconnected',true);
+    	}else{
+    		$this->set('isconnected',false);
+    	}
     $this->loadModel('Fighters');
 				$playerId = $this->request->session()->read('Session.id');
 				$fighterId = $this->Fighters->infoRecover($playerId);
@@ -542,7 +570,11 @@ $password = $this->request->data['password'];
     }
 
     public function index() {
-        
+        if($this->request->session()->check('Session.id')){
+    		$this->set('isconnected',true);
+    	}else{
+    		$this->set('isconnected',false);
+    	}
     }
 
 
