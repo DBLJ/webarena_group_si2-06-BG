@@ -81,6 +81,16 @@ $password = $this->request->data['password'];
         }
     }
 
+    public function logout(){
+	if($this->request->session()->check('Session.id'))
+	{
+		$this->request->session()->destroy();
+		$this->redirect("/Arena/login");
+	}
+	else
+		$this->redirect("/Arena/login");
+    }
+
     public function fighter() {
 	$checkPosition = 1;
 	$i = 0;

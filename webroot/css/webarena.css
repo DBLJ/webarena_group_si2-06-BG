@@ -27,10 +27,16 @@ header{
     justify-content: space-around;
     margin-top: 23px;;
 }
-.login{
+.logout{
     width: 75px;
     height: auto;
     background-color: lightgreen;
+}
+
+.logout a{
+height: auto;
+width: 75px;
+
 }
 .login_menu{
     background-color: blue;
@@ -258,4 +264,13 @@ margin: auto;
    width: 120px;
    margin-left: auto;
    margin-right: auto;
+}
+
+.img_logout
+{
+  width: 60px;
+  height: 64px;
+  margin-left: 7px;
+  margin-top: 5px;
+
 }
