@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\I18n\Time;
+use Cake\Utility\Security;
 
 /**
  * Personal Controller
@@ -49,8 +50,9 @@ class ArenaController extends AppController {
                 $this->loadModel('Fighters');
                 $mail = $this->request->data['usermail'];
                 $password = $this->request->data['password'];
+                $cryptpassword = Security::hash($this->request->data['password']); 
 
-                $test = $this->Fighters->connexion($mail, $password);
+                $test = $this->Fighters->connexion($mail, $cryptpassword);
 
                 if (!$test['id']) {
 
@@ -69,9 +71,10 @@ class ArenaController extends AppController {
 $mail = $this->request->data['email'];
 $password = $this->request->data['password'];
                 if (strlen($this->request->data['password']) > 6) {
-                    $indic = $this->Players->register($this->request->data['email'], $this->request->data['password']);
+                    $cryptpassword = Security::hash($this->request->data['password']);
+                    $indic = $this->Players->register($this->request->data['email'], $cryptpassword);
                     if ($indic) {
-                        $test = $this->Fighters->connexion($mail, $password);
+                        $test = $this->Fighters->connexion($mail, $cryptpassword);
                         $i = $test['id'];
                         $this->request->Session()->write('Session.id', $i);
                         $this->redirect("/Arena/fighter");
@@ -539,7 +542,12 @@ $password = $this->request->data['password'];
     $this->loadModel('Fighters');
 				$playerId = $this->request->session()->read('Session.id');
 				$fighterId = $this->Fighters->infoRecover($playerId);
-				$this->set('test', $fighterId);
+                                if(isset($fighterId[0]['guild_id'])){
+                                $guildinfo = $this->Fighters->guildrecover(($fighterId[0]['guild_id']));
+                                
+                                $this->set('guildinfo',$guildinfo);
+                                }     
+                                $this->set('test', $fighterId);
 	if ($this->request->session()->check('Session.id')) 
 	{
 		if (!$fighterId) {

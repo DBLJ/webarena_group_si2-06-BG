@@ -209,12 +209,17 @@ justify-content: center;
     display:none;
 }
 #div1{
-    background-color: lightyellow;
-border: 3px blue dashed;
-border-radius: 10px;
-width: 20%;
-z-index: 1;
-margin: auto;
+
+    position: absolute;
+    background-color: pink;
+    border: 3px blue dashed;
+    border-radius: 10px;
+    margin-left: 10%;
+    margin-top: 15%;
+    margin-top: 0px;
+    width : 20%;
+    margin-top: 5%;
+    z-index: 1;
 }
 
 #div2{
@@ -281,4 +286,23 @@ margin: auto;
   margin-left: 7px;
   margin-top: 5px;
 
+}
+
+#descriptionjeu{
+    position :absolute;
+    margin-left: 20%;
+    margin-right: auto;
+    margin-top:7%;
+    width : 50%;
+    z-index: 2;
+    padding-left: 10px;
+    color : white;
+    text-align: center;
+    font-size: 22px;
+    
+}
+
+#imagedefond{
+    z-index: 1;
+    position : relative;
 }
