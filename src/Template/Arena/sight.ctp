@@ -1,4 +1,4 @@
-<div id="container">
+<div id="containerBug">
 	<div id="left_container">
 	<div id="top_container">
 	<p> se déplacer </p>
