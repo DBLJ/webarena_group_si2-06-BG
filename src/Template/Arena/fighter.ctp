@@ -5,6 +5,7 @@
 
 <div id="div1" class="hidden">
 <?php 
+echo '<img src="../webroot/img/gladiator.jpg" alt="avatar" width="100%" height="auto">';
 echo ("Votre personnage");
 echo '<br>';
 if($nb_perso != 0)
@@ -50,7 +51,7 @@ if($nb_perso != 0)
     </br>
                 <form class="marginL" name="upgrade_skill_strenght" action="fighter" method="post" accept-charset="utf-8">
                     <?php if(isset($mavariable)){?>
-				<input type="hidden" name="process" value="strenght">
+.				<input type="hidden" name="process" value="strenght">
 				<input type="submit" value="&#94;">
                                 <?php }?>
                 </form>
@@ -77,6 +78,7 @@ if($nb_perso != 0)
     
 }
 if(isset($nomguild[0]['name'])){
+echo "Guilde:";
 echo($nomguild[0]['name']);}
 ?>
 </div>
