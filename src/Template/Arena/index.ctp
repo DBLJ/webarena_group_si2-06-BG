@@ -11,6 +11,10 @@ echo '<img src="../webroot/img/fond.png" alt="avatar" width="100%" height="100%"
     <p>L'union fait la force ! Créez ou rejoignez une guilde afin de combattre vos ennemis en équipe. </p>
     <p> Augmentez votre force, santé ou encore visée et devenez le combattant le plus redouté de webarena. </p>
     <p>Connectez vous en un clic avec votre compte Google !</p>
-    
+     <?php
+     if (!$isconnected){
+      echo $this->Html->link('Se connecter', array('controller' => 'Arena', 'action' => '/login'),array('id' => 'myId')); 
+      }
+      ?>
 </div>
 </div>

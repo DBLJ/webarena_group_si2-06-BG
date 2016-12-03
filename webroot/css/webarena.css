@@ -296,7 +296,12 @@ margin :auto;
     font-size: 22px;
     top:0;
     background-color: rgba(0,0,0,0.4);
+    height: 100%;
     
+}
+#myId{
+        border: 1px solid;
+    padding: 10px;
 }
 
 #imagedefond{
