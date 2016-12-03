@@ -25,7 +25,12 @@ if ($test) {
 	if ($test[0]['guild_id']) {	
 			$i =$test[0]['guild_id']-1;
 			echo '<p style="text-align:center;"> Votre guilde :';
-			echo $guilds[$i]['name'];
+                        if(isset($guildinfo[0]['name']));
+                        {
+                            echo($guildinfo[0]['name']);
+                        }
+                        if(isset($guilds[$i]['name'])){
+                        echo $guilds[$i]['name'];}
 			echo '</p>';
 			}
 		}
