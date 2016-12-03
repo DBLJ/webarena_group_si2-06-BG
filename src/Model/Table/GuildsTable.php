@@ -27,6 +27,7 @@ class GuildsTable extends Table
 		$guild = $this->newEntity();
 		$guild->name = $name;
 		$this->save($guild);
+		return $guild->id;
 	}
 
 

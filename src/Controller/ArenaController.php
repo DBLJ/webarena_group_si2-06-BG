@@ -479,11 +479,14 @@ $password = $this->request->data['password'];
     }
 
     public function guild(){
-
+    $this->loadModel('Fighters');
+				$playerId = $this->request->session()->read('Session.id');
+				$fighterId = $this->Fighters->infoRecover($playerId);
+				$this->set('test', $fighterId);
 	if ($this->request->session()->check('Session.id')) 
 	{
 		$this->loadModel('Guilds');
-
+		$this->loadModel('Fighters');
 		if($this->request->is('post'))
 		{
 			if ($this->request->data['process'] == 'createGuild')
@@ -493,7 +496,8 @@ $password = $this->request->data['password'];
 			{
 				if(!($this->Guilds->existsGuildSameName($guildName)))
 				{
-					$this->Guilds->setGuild($guildName);
+					$guildId2=$this->Guilds->setGuild($guildName);
+					$this->Fighters->setGuildId($guildId2,$fighterId[0]['id']);
 					$this->redirect("/Arena/guild");
 				}
 			}
