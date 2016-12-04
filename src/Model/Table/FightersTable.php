@@ -87,7 +87,7 @@ class FightersTable extends Table
 	$messages= \Cake\ORM\TableRegistry::get('Messages');
 	/*$info= $messages->find('all', array('conditions'=>array('fighter_id_from ='=>$fighterId_source, 'fighter_id ='=>$fighterId_destination)))->toArray();*/
 	$info= $messages->find('all')
-		->select(['title','message'])
+		->select(['title','message','fighter_id_from'])
 		->where(['fighter_id_from ='=>$fighterId_source, 'fighter_id'=>$fighterId_destination])
 		->orWhere(['fighter_id_from ='=>$fighterId_destination, 'fighter_id'=>$fighterId_source])
 		->toArray();

@@ -106,6 +106,7 @@
 	if ($choosenPlayer) {
 		if ($ennemy){
 	echo '<div id="chat_container">';
+	echo '<h3>'.$ennemy[0]['name'].'</h3>';
 	echo '<div id="discussion">';
 		//<?php
 		if($messages == 'undef'){
@@ -117,8 +118,15 @@
 			if ($messages[$i]['title'] == "shouted") {
 				echo '<p><b>'.$messages[$i]['message'].'</b></p>';
 			}else{
-				echo '<p>'.$messages[$i]['message'].'</p>';
+
+				if(($fighterId) == ($messages[$i]['fighter_id_from'])){
+					echo '<div class="emitted"><p class="emitted_text">'.$messages[$i]['message'].'</p></div>';
+				}
+				else{
+					echo '<div class="received"><p class="received_text">'.$messages[$i]['message'].'</p></div>';
+				}
 			}
+
 			
 		}
 		}
@@ -127,10 +135,9 @@
 
 		echo '<div id="input_field">';
 		echo '<form name="chat_form" action="sight" method="post" accept-charset="utf-8">';
-			
 			echo '<input type="hidden" name="process" value="send">';
 			echo '<input type="hidden" name="title" size="20" placeholder="Titre">';
-			echo '<textarea name="message" style="width: 100%" placeholder="Entrez votre message ici"></textarea>';
+			echo '<textarea name="message" rows=1 style="width: 100%" placeholder="Entrez votre message ici"></textarea>';
 			echo '<input name="send"type="submit" value="envoyer">';
 			echo '<input name="send" type="submit" value="crier">';
 			echo '</form>';
