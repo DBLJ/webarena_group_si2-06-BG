@@ -43,6 +43,7 @@ class ArenaController extends AppController {
                 	}
         			
         		}else{
+        			$this->Flash->success('Echec de connexion.');
         			$this->redirect("/Arena/login");
         		}
         		
@@ -56,7 +57,7 @@ class ArenaController extends AppController {
                 $test = $this->Fighters->connexion($mail, $cryptpassword);
 
                 if (!$test['id']) {
-
+                	$this->Flash->success('Echec de connexion.');
                     $this->redirect("/Arena/login");
                 } else {
                     $i = $test['id'];
@@ -82,7 +83,7 @@ $password = $this->request->data['password'];
                         echo('Vous etes inscrit et maintenant connecté');
                     }
                 } else {
-                    echo("Entrez un mot de passe avec plus de 6 caractères");
+                    $this->Flash->success('Entrez un mot de passe avec plus de 6 caractères');
                     $this->redirect("/Arena/login");
                 }
             }
