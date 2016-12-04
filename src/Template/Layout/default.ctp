@@ -49,9 +49,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <li>
              <?php if ($isconnected) {echo $this->Html->link('Guildes', array('controller' => 'Arena', 'action' => 'guild')); }?>            
             </li>
-            <li>
-             <?php echo $this->Html->link('Connexion', array('controller' => 'Arena', 'action' => 'login')); ?>
-            </li>
+            
+             <?php if (!$isconnected) {echo '<li>';echo $this->Html->link('Connexion', array('controller' => 'Arena', 'action' => 'login'));echo '</li>';} ?>
+            
             <li>
              <?php if ($isconnected) {echo $this->Html->link('Journal', array('controller' => 'Arena', 'action' => 'diary'));}?>
             </li>
