@@ -15,9 +15,10 @@ class ArenaController extends AppController {
 
 
     public function login() {
-
+	
     	if($this->request->session()->check('Session.id')){
     		$this->set('isconnected',true);
+		$this->redirect("/Arena/fighter");
     	}else{
     		$this->set('isconnected',false);
     	}
@@ -205,6 +206,12 @@ $password = $this->request->data['password'];
     }
 
     public function sight() {
+
+	$this->loadModel('Fighters');
+	$sessionId = $this->request->session()->read('Session.id');
+	$infoFighter = $this->Fighters->infoRecover($sessionId);
+	$infoFighterId = $infoFighter[0]['id'];
+	$this->set('fighterId', $infoFighterId);
     	if($this->request->session()->check('Session.id')){
     		$this->set('isconnected',true);
     	}else{
