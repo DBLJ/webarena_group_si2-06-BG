@@ -81,6 +81,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </div>
     <footer class="bottom-bar">
     <p>SI2-06-BG Pecontal Selvarangame Sternberger</p>
+    <p><a href="/SI206BG/versions.log"
+   download="versions.log">lien vers log GIT</a></p>
     </footer>
 </body>
 </html>
