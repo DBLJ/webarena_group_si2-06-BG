@@ -80,7 +80,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <?= $this->fetch('content') ?>
     </div>
     <footer class="bottom-bar">
-    <p> mon nom mes camarades SI2</p>
+    <p>SI2-06-BG Pecontal Selvarangame Sternberger</p>
     </footer>
 </body>
 </html>

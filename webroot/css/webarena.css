@@ -8,6 +8,7 @@ header{
     width: 100%;
     height:75px;
 }
+
 .container{
     position: absolute;
     top: 75px;
@@ -55,8 +56,9 @@ opacity: 0;
     position: absolute;
     bottom: 0;
     display: flex;
-    align-content: end;
-    justify-content: end;
+    align-content: center;
+    justify-content: center;
+    color: white;
 }
 
 /* links */
