@@ -1,6 +1,6 @@
 function test(arg1,arg2)
 {
-  document.location.href="/testrename/arena/sight/"+arg1+"/"+arg2;
+  document.location.href="/WebarenaSI2-06-BG/arena/sight/"+arg1+"/"+arg2;
 }
 
 function redirect(arg1){

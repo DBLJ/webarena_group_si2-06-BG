@@ -172,7 +172,7 @@
     		echo $nombre_de_colonne;
     		echo ',';
     		echo $nombre_de_ligne;
-    		echo ')" style="background: green url(../webroot/img/perso.png) no-repeat center center;"></div>';
+    		echo ')" style="background: green;"></div>';
 		    $nombre_de_ligne++;
 		}
 		elseif (($ennemy[0]['coordinate_x']==$nombre_de_ligne and $ennemy[0]['coordinate_y']==$nombre_de_colonne and abs($nombre_de_ligne-$perso[0]['coordinate_x'])+abs($nombre_de_colonne-$perso[0]['coordinate_y'])<=$perso[0]['skill_sight'])){
