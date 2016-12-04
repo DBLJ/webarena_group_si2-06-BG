@@ -209,15 +209,18 @@ $password = $this->request->data['password'];
     public function sight() {
 
 	$this->loadModel('Fighters');
+	if($this->request->session()->check('Session.id')){
+    		$this->set('isconnected',true);
+    	}else{
+    		$this->set('isconnected',false);
+    		$this->redirect("/arena/login");
+    	}
+    if($this->request->session()->check('Session.id')){
 	$sessionId = $this->request->session()->read('Session.id');
 	$infoFighter = $this->Fighters->infoRecover($sessionId);
 	$infoFighterId = $infoFighter[0]['id'];
 	$this->set('fighterId', $infoFighterId);
-    	if($this->request->session()->check('Session.id')){
-    		$this->set('isconnected',true);
-    	}else{
-    		$this->set('isconnected',false);
-    	}
+	}
 	$infoMessage=$this->request->session()->read('choosenPlayer');
 	if($infoMessage)
 	{
