@@ -319,13 +319,13 @@ $password = $this->request->data['password'];
     	  	}		
     		
     	}else{
-    		echo "Error: raté: vous êtes trop loin de la cible";
+    		echo "Error: raté: vous êtes trop loin de la cible ou vous visez une case vide";
     	}
     	}else{
-    		echo "Error: raté: vous êtes trop loin de la cible";
+    		echo "Error: raté: vous êtes trop loin de la cible ou vous visez une case vide";
     	}
     	}else{
-    		echo "Error: raté: vous êtes trop loin de la cible";
+    		echo "Error: raté: vous êtes trop loin de la cible ou vous visez une case vide";
     	}
     	}
     	$test = $this->request->session()->read('xp_actuel');  		
