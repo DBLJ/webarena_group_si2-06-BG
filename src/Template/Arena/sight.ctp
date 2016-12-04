@@ -1,7 +1,7 @@
 <div id="containerBug">
 	<div id="left_container">
 	<div id="top_container">
-	<p> se déplacer </p>
+	<p> se déplacer</p>
 	<!--<?php // echo $this->Form->create(); ?>
 	<?php 
 	/*#define largeur (x) & longeur (y) of the arena:
@@ -70,6 +70,7 @@
 </form>
 </div>
 </div>
+<p>( cliquer sur l'ennemi pour attaquer )</p>
 	</div>
 	<div id="bottom_container">
 	<?php 
